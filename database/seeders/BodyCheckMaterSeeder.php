@@ -17,7 +17,7 @@ class BodyCheckMaterSeeder extends Seeder
     {
         DB::table('body_check_masters')->insert([
             [
-                'question' => 'お尻と太ももは比較的肉厚ですか？',
+                'question' => '臀部、大腿部位相对肉较多？',
                 'sort_no' => '1',
                 'pear' => '1',
                 'apple' => '0',
@@ -25,7 +25,7 @@ class BodyCheckMaterSeeder extends Seeder
                 'pineapple' => '0',
             ],
             [
-                'question' => 'よくお菓子を食べますか？（週に3回以上）',
+                'question' => '经常吃甜食？ （每周多于3次）',
                 'sort_no' => '2',
                 'pear' => '0',
                 'apple' => '1',
@@ -33,7 +33,7 @@ class BodyCheckMaterSeeder extends Seeder
                 'pineapple' => '0',
             ],
             [
-                'question' => 'にきびや吹き出物が発生しやすいですか？',
+                'question' => '容易起痘痘、痤疮？',
                 'sort_no' => '3',
                 'pear' => '0',
                 'apple' => '1',
@@ -41,7 +41,7 @@ class BodyCheckMaterSeeder extends Seeder
                 'pineapple' => '0',
             ],
             [
-                'question' => '身体を動かすことが少ないですか？（週に3回未満）',
+                'question' => '运动量较少？（每周少于3次）',
                 'sort_no' => '4',
                 'pear' => '0',
                 'apple' => '0',
@@ -49,7 +49,7 @@ class BodyCheckMaterSeeder extends Seeder
                 'pineapple' => '1',
             ],
             [
-                'question' => '顔にむくみを感じますか？',
+                'question' => '面部下肢容易浮肿？',
                 'sort_no' => '5',
                 'pear' => '0',
                 'apple' => '0',
@@ -57,7 +57,7 @@ class BodyCheckMaterSeeder extends Seeder
                 'pineapple' => '0',
             ],
             [
-                'question' => '便がゆるい・下痢気味ですか？',
+                'question' => '大便不成形？',
                 'sort_no' => '6',
                 'pear' => '0',
                 'apple' => '0',
@@ -65,7 +65,7 @@ class BodyCheckMaterSeeder extends Seeder
                 'pineapple' => '0',
             ],
             [
-                'question' => '不安やイライラを感じますか？（直近1ヶ月）',
+                'question' => '情绪容易焦虑、暴躁？（近一个月）',
                 'sort_no' => '7',
                 'pear' => '1',
                 'apple' => '0',
@@ -73,7 +73,7 @@ class BodyCheckMaterSeeder extends Seeder
                 'pineapple' => '0',
             ],
             [
-                'question' => '毎日長時間座っていますか？',
+                'question' => '每天坐的时间较长？',
                 'sort_no' => '8',
                 'pear' => '1',
                 'apple' => '0',
@@ -81,7 +81,7 @@ class BodyCheckMaterSeeder extends Seeder
                 'pineapple' => '0',
             ],
             [
-                'question' => '腰周りや下腹部の脂肪が目立ちますか？',
+                'question' => '腰间赘肉突出、小腹明显？',
                 'sort_no' => '9',
                 'pear' => '0',
                 'apple' => '1',
@@ -89,7 +89,7 @@ class BodyCheckMaterSeeder extends Seeder
                 'pineapple' => '0',
             ],
             [
-                'question' => '運動をしていないのに暑くて汗をかきやすいことがよくありますか？',
+                'question' => '正常状态时经常感觉身体发热并容易出汗？',
                 'sort_no' => '10',
                 'pear' => '0',
                 'apple' => '1',
@@ -97,7 +97,7 @@ class BodyCheckMaterSeeder extends Seeder
                 'pineapple' => '0',
             ],
             [
-                'question' => '1日あたり1000cc（約2カップ）未満の水を飲みますか？',
+                'question' => '每天饮水量少于1000cc（约2杯）？',
                 'sort_no' => '11',
                 'pear' => '0',
                 'apple' => '0',
@@ -105,7 +105,7 @@ class BodyCheckMaterSeeder extends Seeder
                 'pineapple' => '1',
             ],
             [
-                'question' => '食事の時間は不規則ですか？',
+                'question' => '饮食不规律？',
                 'sort_no' => '12',
                 'pear' => '0',
                 'apple' => '0',
@@ -113,7 +113,7 @@ class BodyCheckMaterSeeder extends Seeder
                 'pineapple' => '1',
             ],
             [
-                'question' => '手足は比較的細いですか？',
+                'question' => '四肢相对较细？',
                 'sort_no' => '13',
                 'pear' => '0',
                 'apple' => '1',
@@ -121,7 +121,7 @@ class BodyCheckMaterSeeder extends Seeder
                 'pineapple' => '0',
             ],
             [
-                'question' => '高塩分保存食品を頻繁に摂取しますか？ （週に3回以上）',
+                'question' => '经常摄入高盐、腌制类食物？ （每周多于3次）',
                 'sort_no' => '14',
                 'pear' => '0',
                 'apple' => '0',
@@ -129,7 +129,7 @@ class BodyCheckMaterSeeder extends Seeder
                 'pineapple' => '0',
             ],
             [
-                'question' => '頭と顔が油っぽくなりがちですか？',
+                'question' => '头面部易出油？',
                 'sort_no' => '15',
                 'pear' => '0',
                 'apple' => '0',
@@ -137,7 +137,7 @@ class BodyCheckMaterSeeder extends Seeder
                 'pineapple' => '0',
             ],
             [
-                'question' => '夜更かしになりがちですか？',
+                'question' => '经常熬夜？',
                 'sort_no' => '16',
                 'pear' => '0',
                 'apple' => '0',
@@ -145,7 +145,7 @@ class BodyCheckMaterSeeder extends Seeder
                 'pineapple' => '1',
             ],
             [
-                'question' => '高カロリーの食べ物をよく食べますか？',
+                'question' => '经常吃高热量食物？',
                 'sort_no' => '17',
                 'pear' => '0',
                 'apple' => '0',
@@ -153,7 +153,7 @@ class BodyCheckMaterSeeder extends Seeder
                 'pineapple' => '1',
             ],
             [
-                'question' => '上半身に比べて下半身のほうが太っていたり大きかったりしますか？',
+                'question' => '上身不胖、脸不大？',
                 'sort_no' => '18',
                 'pear' => '1',
                 'apple' => '0',
@@ -161,7 +161,7 @@ class BodyCheckMaterSeeder extends Seeder
                 'pineapple' => '0',
             ],
             [
-                'question' => '体のだるさや疲れやすさなどありますか？ （直近1ヶ月）',
+                'question' => '身体感觉沉重并容易疲劳？（近一个月）',
                 'sort_no' => '19',
                 'pear' => '0',
                 'apple' => '0',
@@ -169,7 +169,7 @@ class BodyCheckMaterSeeder extends Seeder
                 'pineapple' => '0',
             ],
             [
-                'question' => '脂肪分の多い食べ物を頻繁に食べますか？（週に3回以上）',
+                'question' => '经常吃油脂类食物？（每周多于3次）',
                 'sort_no' => '20',
                 'pear' => '1',
                 'apple' => '0',

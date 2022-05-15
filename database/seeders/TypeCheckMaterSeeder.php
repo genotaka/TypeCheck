@@ -17,7 +17,7 @@ class TypeCheckMaterSeeder extends Seeder
     {
         DB::table('type_check_masters')->insert([
             [
-                'question' => '胸やお腹が張って苦しくなることが多い',
+                'question' => '经常感觉胸闷或腹胀？',
                 'sort_no' => '1',
                 'soul_plus' => '3',
                 'soul_minus' => '0',
@@ -29,7 +29,7 @@ class TypeCheckMaterSeeder extends Seeder
                 'heat_minus' => '0',
             ],
             [
-                'question' => 'イライラしやすく怒りっぽい',
+                'question' => '容易烦躁或易怒？',
                 'sort_no' => '1',
                 'soul_plus' => '3',
                 'soul_minus' => '0',
@@ -41,7 +41,7 @@ class TypeCheckMaterSeeder extends Seeder
                 'heat_minus' => '0',
             ],
             [
-                'question' => '不眠になりやすい',
+                'question' => '容易失眠？',
                 'sort_no' => '3',
                 'soul_plus' => '3',
                 'soul_minus' => '0',
@@ -53,7 +53,7 @@ class TypeCheckMaterSeeder extends Seeder
                 'heat_minus' => '0',
             ],
             [
-                'question' => '皮膚に吹き出物や化膿がよくできる',
+                'question' => '皮肤容易起痘或化脓？',
                 'sort_no' => '4',
                 'soul_plus' => '0',
                 'soul_minus' => '0',
@@ -65,7 +65,7 @@ class TypeCheckMaterSeeder extends Seeder
                 'heat_minus' => '0',
             ],
             [
-                'question' => 'よく尿が濃い黄色になる',
+                'question' => '尿液经常是深黄色？',
                 'sort_no' => '5',
                 'soul_plus' => '0',
                 'soul_minus' => '0',
@@ -77,7 +77,7 @@ class TypeCheckMaterSeeder extends Seeder
                 'heat_minus' => '0',
             ],
             [
-                'question' => '肩がこりやすい',
+                'question' => '容易肩膀僵硬？',
                 'sort_no' => '6',
                 'soul_plus' => '3',
                 'soul_minus' => '0',
@@ -89,7 +89,7 @@ class TypeCheckMaterSeeder extends Seeder
                 'heat_minus' => '0',
             ],
             [
-                'question' => '唇や歯ぐきの色が紫に近い',
+                'question' => '唇色和牙龈颜色成紫色？',
                 'sort_no' => '7',
                 'soul_plus' => '0',
                 'soul_minus' => '0',
@@ -101,7 +101,7 @@ class TypeCheckMaterSeeder extends Seeder
                 'heat_minus' => '0',
             ],
             [
-                'question' => '頭が重く感じられることが多い',
+                'question' => '头部经常感觉沉重？',
                 'sort_no' => '8',
                 'soul_plus' => '0',
                 'soul_minus' => '1',
@@ -113,7 +113,7 @@ class TypeCheckMaterSeeder extends Seeder
                 'heat_minus' => '0',
             ],
             [
-                'question' => '雨の日や湿度の高い日は体調が悪くなりがち',
+                'question' => '雨天或潮湿的天气容易感觉到身体不适？',
                 'sort_no' => '9',
                 'soul_plus' => '0',
                 'soul_minus' => '0',
@@ -125,7 +125,7 @@ class TypeCheckMaterSeeder extends Seeder
                 'heat_minus' => '0',
             ],
             [
-                'question' => '皮膚が乾燥してカサカサしている',
+                'question' => '皮肤干燥起皮？',
                 'sort_no' => '10',
                 'soul_plus' => '0',
                 'soul_minus' => '0',
@@ -137,7 +137,7 @@ class TypeCheckMaterSeeder extends Seeder
                 'heat_minus' => '0',
             ],
             [
-                'question' => '舌のふちがギザギザになっている',
+                'question' => '舌头边缘呈锯齿状？',
                 'sort_no' => '11',
                 'soul_plus' => '0',
                 'soul_minus' => '3',
@@ -149,7 +149,7 @@ class TypeCheckMaterSeeder extends Seeder
                 'heat_minus' => '1',
             ],
             [
-                'question' => '舌のコケがびっしりついて厚みがある',
+                'question' => '舌苔有很厚的苔藓？',
                 'sort_no' => '12',
                 'soul_plus' => '0',
                 'soul_minus' => '2',
@@ -161,7 +161,7 @@ class TypeCheckMaterSeeder extends Seeder
                 'heat_minus' => '1',
             ],
             [
-                'question' => '舌の裏側の静脈が太く膨らんで見える',
+                'question' => '舌下静脉血管粗大？',
                 'sort_no' => '13',
                 'soul_plus' => '0',
                 'soul_minus' => '0',
@@ -173,7 +173,7 @@ class TypeCheckMaterSeeder extends Seeder
                 'heat_minus' => '1',
             ],
             [
-                'question' => '食欲がなく胃もたれしやすい',
+                'question' => '食欲不振且胃部不适？',
                 'sort_no' => '14',
                 'soul_plus' => '1',
                 'soul_minus' => '3',
@@ -185,7 +185,7 @@ class TypeCheckMaterSeeder extends Seeder
                 'heat_minus' => '0',
             ],
             [
-                'question' => '下痢や軟便になることがよくある',
+                'question' => '经常腹泻和软便？',
                 'sort_no' => '15',
                 'soul_plus' => '0',
                 'soul_minus' => '3',
@@ -197,7 +197,7 @@ class TypeCheckMaterSeeder extends Seeder
                 'heat_minus' => '1',
             ],
             [
-                'question' => 'よく腰や膝に疲れや脱力感を感じる',
+                'question' => '经常感到腰部和腿部疲劳无力？',
                 'sort_no' => '16',
                 'soul_plus' => '0',
                 'soul_minus' => '0',
@@ -209,7 +209,7 @@ class TypeCheckMaterSeeder extends Seeder
                 'heat_minus' => '3',
             ],
             [
-                'question' => 'むくみを感じることが多い',
+                'question' => '经常感到浮肿？',
                 'sort_no' => '17',
                 'soul_plus' => '0',
                 'soul_minus' => '0',
@@ -221,7 +221,7 @@ class TypeCheckMaterSeeder extends Seeder
                 'heat_minus' => '3',
             ],
             [
-                'question' => '髪の毛が細くパサつきやすい',
+                'question' => '发质细软干枯？',
                 'sort_no' => '18',
                 'soul_plus' => '0',
                 'soul_minus' => '0',
@@ -233,7 +233,7 @@ class TypeCheckMaterSeeder extends Seeder
                 'heat_minus' => '2',
             ],
             [
-                'question' => '目の疲れや乾燥を感じやすい',
+                'question' => '眼睛特别容易疲劳和干涩？',
                 'sort_no' => '19',
                 'soul_plus' => '0',
                 'soul_minus' => '0',
@@ -245,7 +245,7 @@ class TypeCheckMaterSeeder extends Seeder
                 'heat_minus' => '0',
             ],
             [
-                'question' => '筋肉が痙攣したり、つりやすい',
+                'question' => '肌肉容易抽筋和拉伤？',
                 'sort_no' => '20',
                 'soul_plus' => '1',
                 'soul_minus' => '0',
@@ -257,7 +257,7 @@ class TypeCheckMaterSeeder extends Seeder
                 'heat_minus' => '0',
             ],
             [
-                'question' => 'ほてりやのぼせを感じる',
+                'question' => '经常感觉身体和面部发热？',
                 'sort_no' => '21',
                 'soul_plus' => '2',
                 'soul_minus' => '0',
@@ -269,7 +269,7 @@ class TypeCheckMaterSeeder extends Seeder
                 'heat_minus' => '0',
             ],
             [
-                'question' => '疲労時や夜に手の平や足の裏が熱くなる',
+                'question' => '疲劳或夜晚时，手心脚心经常发热？',
                 'sort_no' => '22',
                 'soul_plus' => '0',
                 'soul_minus' => '0',
