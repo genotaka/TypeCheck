@@ -14,7 +14,7 @@ class BodyMaterSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('type_masters')->insert([
+        DB::table('body_masters')->insert([
             [
                 'sort_no' => '1',
                 'body_name' => 'pear',

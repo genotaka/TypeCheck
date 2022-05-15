@@ -30,7 +30,7 @@ class TypeCheckMaterSeeder extends Seeder
             ],
             [
                 'question' => '容易烦躁或易怒？',
-                'sort_no' => '1',
+                'sort_no' => '2',
                 'soul_plus' => '3',
                 'soul_minus' => '0',
                 'blood_plus' => '0',
