@@ -1,8 +1,21 @@
 {
+    "Email": "ログインID（メールアドレス）",
+    "Password": "パスワード",
+    "Remember me": "ログイン情報を記録する",
+    "Forgot your password?": "パスワードを忘れた方はこちら",
+    "Log in": "ログイン",
+    "register": "アカウント登録",
+    "Name": "アカウント表示名",
+    "Confirm Password": "パスワード（確認用）",
+    "Already registered?": "ログイン画面に戻る",
+    "Register": "アカウント登録",
+    "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.": "パスワードをお忘れの場合は\n登録しているID（メールアドレス）にパスワードリセット用のメールをお送りします。",
+    "Email Password Reset Link": "パスワードリセット",
+    "login_page": "ログインページへ戻る",
     "Whoops! Something went wrong.": "認証エラーです。",
-    "Dashboard": "ダッシュボード",
+    "mypage": "マイページ",
     "top_text": "カンポ理論では、気、血、水などの人体の要素は絶えず変化しており、各要素のバランスが取れているときに体の最高の健康状態が達成されると考えられています。\n実生活では、外部環境、悪い生活習慣、さまざまな精神的ストレスが体のバランスに影響を与え、体を不健康な状態に陥らせ、時間の経過とともにさまざまな病気を引き起こします。\n体質は、ある段階での体の状態を表しており、内部および外部の規制によって変更することができます。\nカンポの理論と現代生活の特徴によると、魔法の箱の私的なカスタマイズは、身体の状態を8種類の体質に分け、それぞれが体のバランスが崩れたときに調整する必要のある要素を表しています。\nマジックボックスの個人的にカスタマイズされたテストにより、自分の体格をすばやく理解し、カスタマイズされた栄養補助食品、食事の調整\u200B\u200B、補助運動を通じて体格を改善し、健康的なバランスを得ることができます。\n\nテストを開いて、あなた自身の魔法の箱を手に入れましょう！",
     "check_type": "体質チェック",
-    "check_description": "症状に応じて「はい」または「いいえ」と答えてください",
-    "check_body": "体型チェック"
+    "check_body": "体型チェック",
+    "check_description": "症状に応じて「はい」または「いいえ」と答えてください"
 }

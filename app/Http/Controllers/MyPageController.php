@@ -8,6 +8,6 @@ class MyPageController extends Controller
 {
     //
     public function index(){
-        return view('mypage');
+        return view('mypage.index');
     }
 }
