@@ -15,13 +15,9 @@
                     <x-nav-link :href="route('mypage.index')" :active="request()->routeIs('mypage.index')">
                         {{ __('mypage') }}
                     </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('check.type.index')" :active="request()->routeIs('check.type.index')">
                         {{ __('check_type') }}
                     </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('check.body.index')" :active="request()->routeIs('check.body.index')">
                         {{ __('check_body') }}
                     </x-nav-link>
@@ -97,4 +93,6 @@
                     </x-responsive-nav-link>
                 </form>
             </div>
-        <
+        </div>
+    </div>
+</nav>

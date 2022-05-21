@@ -10,7 +10,6 @@
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('check.body.index') }}">
                         {{ __('check_body') }}
                     </a>
-
                 </div>
             </div>
         </div>

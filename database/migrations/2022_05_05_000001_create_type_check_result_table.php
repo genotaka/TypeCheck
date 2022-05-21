@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('type_check_result_masters', function (Blueprint $table) {
+        Schema::create('type_check_results', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
             $table->tinyInteger('soul_plus');
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_check_result_masters');
+        Schema::dropIfExists('type_check_results');
     }
 };

@@ -4,17 +4,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Authentication Language Lines
+    | 認証言語行
     |--------------------------------------------------------------------------
     |
-    | The following language lines are used during authentication for various
-    | messages that we need to display to the user. You are free to modify
-    | these language lines according to your application's requirements.
+    | 以下の言語行は認証時にユーザーに対し表示する必要のある
+    | 様々なメッセージです。アプリケーションの必要に合わせ
+    | 自由にこれらの言語行を変更してください。
     |
     */
 
     'failed' => '入力されたログインIDかパスワードが正しくありません。',
     'password' => '入力されたパスワードが正しくありません。',
-    'throttle' => 'ログイン試行回数が多すぎます。 :seconds 秒後にもう一度やり直してください。',
+    'throttle' => 'ログインに続けて失敗しています。一時的にログインを制限します。 :seconds 秒後に再度お試しください。',
 
 ];
