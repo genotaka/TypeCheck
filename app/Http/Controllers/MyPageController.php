@@ -10,11 +10,17 @@ class MyPageController extends Controller
 {
     //
     public function index(){
-        $checkResultVal = DB::table('type_check_results')->where('user_id',Auth::id())->whereNull('deleted_at')->orderBy('created_at','asc')->get();
+
+        // 自分の診断結果を取得
+        $checkResultTypeVal = DB::table('type_check_results')->where('user_id',Auth::id())->whereNull('deleted_at')->orderBy('created_at','asc')->get();
+        $checkResultBodyVal = DB::table('body_check_results')->where('user_id',Auth::id())->whereNull('deleted_at')->orderBy('created_at','asc')->get();
 
         // タイプデータを取得
         $typeVal = DB::table('type_masters')->whereNull('deleted_at')->orderBy('created_at','asc')->get();
 
-        return view('mypage.index', ['check_result' => $checkResultVal, 'type_data' => $typeVal]);
+        // 体型データを取得
+        $bodyVal = DB::table('body_masters')->whereNull('deleted_at')->orderBy('created_at','asc')->get();
+
+        return view('mypage.index', ['type_result' => $checkResultTypeVal, 'body_result' => $checkResultBodyVal, 'type_data' => $typeVal, 'body_data' => $bodyVal]);
     }
 }

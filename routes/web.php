@@ -34,7 +34,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::prefix('typecheck')->name('check.type.')->group(function () {
         Route::controller(TypeCheckController::class)->group(function () {
-            Route::get('/', 'index')->name('index');
             Route::get('/check_start', 'check')->name('start');
             Route::post('/check_result', 'submit')->name('submit');
         });

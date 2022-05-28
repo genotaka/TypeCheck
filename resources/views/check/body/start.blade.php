@@ -1,47 +1,46 @@
 <x-app-layout>
-    @section('title', '体質チェックスタート')
-    @section('description', '体調管理のためにまずご自身の体質をチェックして理解することが肝心です。')
+    @section('title', '体型チェックスタート')
 
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
     </x-slot>
-
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-12 grey-ic text-center">
-                                <h4 class="h4 h4-responsive">あてはまる症状に「はい」か「いいえ」で回答してください。</h4>
-                            </div>
-                        </div>
+                    <div class="lg:text-center">
+                        <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">body check</h2>
+                        <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">{{ __('check_body') }}</p>
+                        <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">あてはまる症状に「はい」か「いいえ」で回答してください。</p>
+                    </div>
+
+                    <div class="mt-10">
                         <form method="POST" action="{{ route('check.body.submit') }}">
                             @csrf
-                            <div class="form-group row grey-ic">
-                                @foreach ($question as $question_row)
-                                    <div class="col-6 my-3">
+                            <div class="form-group">
+                                <div class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
+                                    @foreach ($question as $question_row)
                                         <div class="radio_content">
                                             <p class="alert alert-warning">Q{{ $question_row->id }}. {{ $question_row->question }}</p>
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" class="custom-control-input" id="q{{ $question_row->id }}_yes" name="{{ $question_row->id }}" value="yes">
-                                                <label class="custom-control-label" for="q{{ $question_row->id }}_yes">はい</label>
-                                            </div>
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" class="custom-control-input" id="q{{ $question_row->id }}_no" name="{{ $question_row->id }}" value="no" checked>
-                                                <label class="custom-control-label" for="q{{ $question_row->id }}_no">いいえ</label>
+                                            <!-- radio component -->
+                                            <div class="grid w-full grid-cols-2 space-x-2 rounded-xl bg-gray-200 p-2">
+                                                <div>
+                                                    <input type="radio" id="q{{ $question_row->id }}_yes" name="{{ $question_row->id }}" value="yes" class="peer hidden"  />
+                                                    <label for="q{{ $question_row->id }}_yes" class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white">{{__("yes")}}</label>
+                                                </div>
+                                                <div>
+                                                    <input type="radio" id="q{{ $question_row->id }}_no" name="{{ $question_row->id }}" value="no"  class="peer hidden" checked />
+                                                    <label for="q{{ $question_row->id }}_no" class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white">{{__("no")}}</label>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                                </div>
 
-                                <div class="col-12 my-5">
-                                    <button type="submit" class="btn btn-lg btn-block btn-pink">
+                                <div class="mt-10 flex items-center justify-center">
+                                    <x-button>
                                         {{ __('診断する') }}
-                                    </button>
+                                    </x-button>
                                 </div>
                             </div>
                         </form>

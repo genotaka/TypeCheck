@@ -1,4 +1,6 @@
 <x-app-layout>
+    @section('title', 'マイページ')
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('mypage') }}
@@ -15,7 +17,7 @@
                             <h1 class="text-3xl">ユーザー情報</h1>
                         </div>
                         <!--Table-->
-                        <table class="table table-hover mb-0">
+                        <table class="table table-hover mb-0 items-center justify-center">
                             <!--Table body-->
                             <tbody>
                             <tr>
@@ -35,98 +37,232 @@
                     {{--  結果領域  --}}
                     <!-- component -->
                     <div class="bg-white">
-                        <div class="container mx-auto px-6 py-16">
-                            <div class="mx-auto sm:w-6/12 lg:w-5/12 xl:w-[30%]">
-                                <div>
-                                    <h1 class="text-3xl">あなたの体質タイプ判定</h1>
-                                    <p class="mt-2 text-gray-600">サブタイトル</p>
+                        <div class="mx-auto px-6 py-16">
+                            <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" id="tabs-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a href="#tabs-home" class="nav-link block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent active" id="tabs-home-tab" data-bs-toggle="pill" data-bs-target="#tabs-home" role="tab" aria-controls="tabs-home" aria-selected="true">{{__('check_type')}}</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a href="#tabs-profile" class="nav-link block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent" id="tabs-profile-tab" data-bs-toggle="pill" data-bs-target="#tabs-profile" role="tab" aria-controls="tabs-profile" aria-selected="false">{{__('check_body')}}</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="tabs-tabContent">
+                                <div class="tab-pane fade show active" id="tabs-home" role="tabpanel" aria-labelledby="tabs-home-tab">
+                                    <div class="flex items-center justify-center">
+                                        <h1 class="text-3xl">あなたの体質タイプ判定</h1>
+                                    </div>
+
+                                    <div id="carouselTypeCaptions" class="carousel slide relative" data-bs-ride="carousel">
+                                        <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
+                                            @foreach($type_result as $check_result_row)
+                                                <button type="button" data-bs-target="#carouselTypeCaptions" data-bs-slide-to="{{ $loop->index }}" @if ($loop->last) class="active" aria-current="true" @endif aria-label="Slide {{ $loop->index }}"></button>
+                                            @endforeach
+                                        </div>
+                                        <div class="carousel-inner relative w-full overflow-hidden">
+                                            @foreach($type_result as $check_result_row)
+                                                <div class="carousel-item @if ($loop->last)active @endif relative float-left w-full items-center justify-center">
+                                                    <div class="row justify-content-md-center">
+                                                        <div class="col-12 text-center my-3">
+                                                            <p class="lead">チェック日： <span class="red-ic bold">{{ $check_result_row->created_at }}</span></p>
+                                                        </div>
+                                                        <hr>
+                                                        <div class="justify-center">
+                                                            <div class="col-12 col-md-6">
+                                                                <div class="chart-container" style="position: relative; height:50%; width:50%">
+                                                                    <canvas id="typeChart{{ $loop->index }}"></canvas>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-12 col-md-4">
+                                                                @foreach(explode('|', $check_result_row->type_result) as $data)
+
+                                                                    @foreach($type_data as $type_data_row)
+                                                                        @if ($data == $type_data_row->type_name)
+                                                                            <section class="bg-gray-100 lg:py-12 lg:flex lg:justify-center">
+                                                                                <div class="bg-white lg:mx-8 lg:flex lg:max-w-5xl lg:shadow-lg lg:rounded-lg">
+                                                                                    <div class="lg:w-1/2">
+                                                                                        <div class="h-64 bg-cover lg:rounded-lg lg:h-full" style="background-image:url('{{$type_data_row->image_path}}')"></div>
+                                                                                    </div>
+
+                                                                                    <div class="max-w-xl px-6 py-12 lg:max-w-5xl lg:w-1/2">
+                                                                                        <img class="img-fluid" src="{{$type_data_row->mark_path}}" alt="status">
+                                                                                        <h3 class="font-bold text-gray-800 md:text-3xl">
+                                                                                            <span class="text-blue-400">{{$type_data_row->type_caption}}</span>
+                                                                                            {{$type_data_row->description}}
+                                                                                        </h3>
+                                                                                        <p class="text-amber-900 mb-4">{{$type_data_row->contents}}</p>
+                                                                                        <div class="card mb-3">
+                                                                                            <div class="card-header orange">治す飲み物</div>
+                                                                                            <hr>
+                                                                                            <p class="">{{$type_data_row->drink}}</p>
+                                                                                        </div>
+                                                                                        <div class="card mb-5">
+                                                                                            <div class="card-header bg-danger">治す食べ物</div>
+                                                                                            <hr>
+                                                                                            <p class="">{{$type_data_row->food}}</p>
+                                                                                        </div>
+
+                                                                                        <div class="mt-8">
+                                                                                            <a class="px-5 py-2 font-semibold text-gray-100 transition-colors duration-200 transform bg-gray-900 rounded-md hover:bg-gray-700" href="{{ route('check.type.start') }}"><i class="fas fa-angle-right"></i> 最新の体質チェックを測る</a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </section>
+                                                                        @endif
+                                                                    @endforeach
+                                                                @endforeach
+                                                            </div>
+                                                            <div class="col-2"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            @endforeach
+                                        </div>
+                                        <button
+                                            class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+                                            type="button" data-bs-target="#carouselTypeCaptions" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button
+                                            class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+                                            type="button" data-bs-target="#carouselTypeCaptions" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
                                 </div>
 
-                                {{-- アイコンコンテンツ --}}
-                                <div class="mt-4">
-                                    <div class="relative flex flex-col justify-end overflow-hidden rounded-b-xl pt-6">
-                                        <div class="group relative flex cursor-pointer justify-between rounded-xl bg-amber-200 before:absolute before:inset-y-0 before:right-0 before:w-1/2 before:rounded-r-xl before:bg-gradient-to-r before:from-transparent before:to-amber-600 before:opacity-0 before:transition before:duration-500 hover:before:opacity-100">
-                                            <div class="relative  space-y-1 p-4">
-                                                <h4 class="text-lg text-amber-900">血不足</h4>
-                                                <div class="relative h-6 text-amber-800 text-sm">
-                                                    <span class="transition duration-300 group-hover:invisible group-hover:opacity-0">詳細はこちら</span>
-                                                    <a href="" class="flex items-center gap-3 invisible absolute left-0 top-0 translate-y-3 transition duration-300 group-hover:visible group-hover:translate-y-0">
-                                                        <span>詳細 </span>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 -translate-x-4 transition duration-300 group-hover:translate-x-0" viewBox="0 0 20 20" fill="currentColor">
-                                                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                        </svg>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <img class="absolute bottom-0 right-6 w-[6rem] transition duration-300 group-hover:scale-[1.6]" src="/img/mark/blood_minus.png" alt="" />
-                                        </div>
+                                <div class="tab-pane fade" id="tabs-profile" role="tabpanel" aria-labelledby="tabs-profile-tab">
+                                    <div class="flex items-center justify-center">
+                                        <h1 class="text-3xl">あなたの体型タイプ判定</h1>
                                     </div>
-                                    <div class="relative -mr-6 flex flex-col justify-end overflow-hidden rounded-b-xl pt-6 pr-6">
-                                        <div class="group relative flex cursor-pointer justify-between rounded-xl bg-orange-200 before:absolute before:inset-y-0 before:right-0 before:w-1/2 before:rounded-r-xl before:bg-gradient-to-r before:from-transparent before:to-orange-600 before:opacity-0 before:transition before:duration-500 hover:before:opacity-100">
-                                            <div class="relative space-y-1 p-4">
-                                                <h4 class="text-lg text-orange-900">血の滞り</h4>
-                                                <div class="relative h-6 text-orange-800 text-sm">
-                                                    <span class="transition duration-300 group-hover:invisible group-hover:opacity-0">Selena Gomez</span>
-                                                    <a href="" class="w-max flex items-center gap-3 invisible absolute left-0 top-0 translate-y-3 transition duration-300 group-hover:visible group-hover:translate-y-0">
-                                                        <span>Listen now </span>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 -translate-x-4 transition duration-300 group-hover:translate-x-0" viewBox="0 0 20 20" fill="currentColor">
-                                                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                        </svg>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <img class="absolute -bottom-1 right-0 w-[6rem] transition duration-300 group-hover:scale-[1.4]" src="/img/mark/blood_plus.png" alt="" />
+                                    <div id="carouselBodyCaptions" class="carousel slide relative" data-bs-ride="carousel">
+                                        <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
+                                            @foreach($body_result as $check_result_row)
+                                                <button type="button" data-bs-target="#carouselBodyCaptions" data-bs-slide-to="{{ $loop->index }}" @if ($loop->last) class="active" aria-current="true" @endif aria-label="Slide {{ $loop->index }}"></button>
+                                            @endforeach
                                         </div>
-                                    </div>
-                                    <div class="relative flex flex-col justify-end overflow-hidden rounded-b-xl pt-6">
-                                        <div class="group relative flex cursor-pointer justify-between rounded-xl bg-rose-200 before:absolute before:inset-y-0 before:right-0 before:w-1/2 before:rounded-r-xl before:bg-gradient-to-r before:from-transparent before:to-rose-600 before:opacity-0 before:transition before:duration-500 hover:before:opacity-100">
-                                            <div class="relative space-y-1 p-4">
-                                                <h4 class="text-lg text-rose-900">Love yourself</h4>
-                                                <div class="relative h-6 text-rose-800 text-sm">
-                                                    <span class="transition duration-300 group-hover:invisible group-hover:opacity-0">Justin Bieber</span>
-                                                    <a href="" class="w-max flex items-center gap-3 invisible absolute left-0 top-0 translate-y-3 transition duration-300 group-hover:visible group-hover:translate-y-0">
-                                                        <span>Listen now </span>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 -translate-x-4 transition duration-300 group-hover:translate-x-0" viewBox="0 0 20 20" fill="currentColor">
-                                                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                        </svg>
-                                                    </a>
+                                        <div class="carousel-inner relative w-full overflow-hidden">
+                                            @foreach($body_result as $check_result_row)
+                                                <div class="carousel-item @if ($loop->last)active @endif relative float-left w-full items-center justify-center">
+                                                    <div class="row justify-content-md-center">
+                                                        <div class="col-12 text-center my-3">
+                                                            <p class="lead">チェック日： <span class="red-ic bold">{{ $check_result_row->created_at }}</span></p>
+                                                        </div>
+                                                        <hr>
+                                                        <div class="justify-center">
+                                                            <div class="col-12 col-md-4">
+                                                                @foreach(explode('|', $check_result_row->body_result) as $data)
+                                                                    @foreach($body_data as $body_data_row)
+                                                                        @if ($data == $body_data_row->body_name)
+                                                                            <section class="bg-gray-100 lg:py-12 lg:flex lg:justify-center">
+                                                                                <div class="bg-white lg:mx-8 lg:flex lg:max-w-5xl lg:shadow-lg lg:rounded-lg">
+                                                                                    <div class="lg:w-1/2">
+                                                                                        <div class="h-64 bg-cover lg:rounded-lg lg:h-full" style="background-image:url('{{$body_data_row->image_path}}')"></div>
+                                                                                    </div>
+
+                                                                                    <div class="max-w-xl px-6 py-12 lg:max-w-5xl lg:w-1/2">
+                                                                                        <h3 class="font-bold text-gray-800 md:text-3xl">
+                                                                                            {{$body_data_row->description}}
+                                                                                        </h3>
+                                                                                        <p class="text-amber-900 mb-4">{{$type_data_row->contents}}</p>
+                                                                                        <div class="mt-8">
+                                                                                            <a class="px-5 py-2 font-semibold text-gray-100 transition-colors duration-200 transform bg-gray-900 rounded-md hover:bg-gray-700" href="{{ route('check.body.start') }}"><i class="fas fa-angle-right"></i> 最新の体質チェックを測る</a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </section>
+                                                                        @endif
+                                                                    @endforeach
+                                                                @endforeach
+                                                            </div>
+                                                            <div class="col-2"></div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <img class="absolute bottom-0 right-6 w-[6rem] transition duration-300 group-hover:scale-[1.4]" src="https://raw.githubusercontent.com/Meschacirung/Tailus-website/main/public/images/singers/Justin-Bieber.png" alt="" />
+
+                                            @endforeach
                                         </div>
+                                        <button
+                                            class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+                                            type="button" data-bs-target="#carouselBodyCaptions" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button
+                                            class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+                                            type="button" data-bs-target="#carouselBodyCaptions" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
                                     </div>
-                                    <div class="relative -mr-6 flex flex-col justify-end overflow-hidden rounded-b-xl pt-6 pr-6">
-                                        <div class="group relative flex cursor-pointer justify-between rounded-xl bg-fuchsia-200 before:absolute before:inset-y-0 before:right-0 before:w-1/2 before:rounded-r-xl before:bg-gradient-to-r before:from-transparent before:to-fuchsia-600 before:opacity-0 before:transition before:duration-500 hover:before:opacity-100">
-                                            <div class="relative w-7/12 space-y-1 p-4">
-                                                <h4 class="text-lg text-fuchsia-900">7 Rings</h4>
-                                                <div class="relative h-6 text-fuchsia-800 text-sm">
-                                                    <span class="transition duration-300 group-hover:invisible group-hover:opacity-0">Ariana Grande</span>
-                                                    <a href="" class="w-max flex items-center gap-3 invisible absolute left-0 top-0 translate-y-3 transition duration-300 group-hover:visible group-hover:translate-y-0">
-                                                        <span>Listen now </span>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 -translate-x-4 transition duration-300 group-hover:translate-x-0" viewBox="0 0 20 20" fill="currentColor">
-                                                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                        </svg>
-                                                    </a>
-                                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white">
+                        <div class="pt-6">
+                            <!-- Image gallery -->
+                            <div class="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
+                                <div class="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
+                                    <img src="{{ asset('img/illustration/blood_minus_il.png') }}" alt="" class="w-full h-full object-center object-cover">
+                                </div>
+                                <div class="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
+                                    <img src="{{ asset('img/illustration/blood_minus_il.png') }}" alt="" class="w-full h-full object-center object-cover">
+                                </div>
+                                <div class="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4">
+                                    <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg" alt="Model wearing plain white basic tee." class="w-full h-full object-center object-cover">
+                                </div>
+                            </div>
+
+                            <!-- Product info -->
+                            <div class="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
+                                <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+                                    <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">あなたは血不足タイプです</h1>
+                                </div>
+
+                                <!-- 改善する食材 -->
+                                <div class="mt-4 lg:mt-0 lg:row-span-2">
+                                    <div>
+                                        <h3 class="text-3xl text-gray-900 font-medium">直す食べ物</h3>
+                                        <fieldset class="mt-4">
+                                            <div class="mt-4">
+                                                <ul role="list" class="pl-4 list-disc text-sm space-y-2">
+                                                    <li class="text-gray-400"><span class="text-gray-600">Hand cut and sewn locally</span></li>
+                                                    <li class="text-gray-400"><span class="text-gray-600">Dyed with our proprietary colors</span></li>
+                                                    <li class="text-gray-400"><span class="text-gray-600">Pre-washed &amp; pre-shrunk</span></li>
+                                                    <li class="text-gray-400"><span class="text-gray-600">Ultra-soft 100% cotton</span></li>
+                                                </ul>
                                             </div>
-                                            <img class="absolute -bottom-1 right-0 w-[6rem] transition duration-300 group-hover:scale-[1.4]" src="https://raw.githubusercontent.com/Meschacirung/Tailus-website/main/public/images/singers/Ariana-Grande.png" alt="" />
-                                        </div>
+                                        </fieldset>
                                     </div>
-                                    <div class="relative flex flex-col justify-end overflow-hidden rounded-b-xl pt-6">
-                                        <div class="group relative flex cursor-pointer justify-between rounded-xl bg-blue-200 before:absolute before:inset-y-0 before:right-0 before:w-1/2 before:rounded-r-xl before:bg-gradient-to-r before:from-transparent before:to-blue-600 before:opacity-0 before:transition before:duration-500 hover:before:opacity-100">
-                                            <div class="relative space-y-1 p-4">
-                                                <h4 class="text-xl text-blue-900">Diamond</h4>
-                                                <div class="relative h-6 text-blue-800 text-sm">
-                                                    <span class="transition duration-300 group-hover:invisible group-hover:opacity-0">Rihanna</span>
-                                                    <a href="" class="w-max flex items-center gap-3 invisible absolute left-0 top-0 translate-y-3 transition duration-300 group-hover:visible group-hover:translate-y-0">
-                                                        <span>Listen now </span>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 -translate-x-4 transition duration-300 group-hover:translate-x-0" viewBox="0 0 20 20" fill="currentColor">
-                                                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                        </svg>
-                                                    </a>
-                                                </div>
+                                    <div class="mt-10">
+                                        <h3 class="text-3xl text-gray-900 font-medium">直す飲み物</h3>
+                                        <fieldset class="mt-4">
+                                            <div class="mt-4">
+                                                <ul role="list" class="pl-4 list-disc text-sm space-y-2">
+                                                    <li class="text-gray-400"><span class="text-gray-600">Hand cut and sewn locally</span></li>
+                                                    <li class="text-gray-400"><span class="text-gray-600">Dyed with our proprietary colors</span></li>
+                                                    <li class="text-gray-400"><span class="text-gray-600">Pre-washed &amp; pre-shrunk</span></li>
+                                                    <li class="text-gray-400"><span class="text-gray-600">Ultra-soft 100% cotton</span></li>
+                                                </ul>
                                             </div>
-                                            <img class="absolute bottom-0 right-6 w-[6rem] transition duration-300 group-hover:scale-[1.4]" src="https://raw.githubusercontent.com/Meschacirung/Tailus-website/main/public/images/singers/Rihanna.png" alt="" />
+                                        </fieldset>
+                                    </div>
+                                </div>
+
+                                <div class="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+                                    <!-- Description and details -->
+                                    <div>
+                                        <h3 class="sr-only">Description</h3>
+
+                                        <div class="space-y-6">
+                                            <p class="text-base text-gray-900">
+                                                血が不足していると。。。うんたらかんたら
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -134,128 +270,16 @@
                         </div>
                     </div>
 
-
-                    <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" id="tabs-tab"
-                        role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <a href="#tabs-home" class="nav-link block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent active" id="tabs-home-tab" data-bs-toggle="pill" data-bs-target="#tabs-home" role="tab" aria-controls="tabs-home" aria-selected="true">Home</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a href="#tabs-profile" class="nav-link block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent" id="tabs-profile-tab" data-bs-toggle="pill" data-bs-target="#tabs-profile" role="tab" aria-controls="tabs-profile" aria-selected="false">Profile</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a href="#tabs-messages" class="nav-link block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent" id="tabs-messages-tab" data-bs-toggle="pill" data-bs-target="#tabs-messages" role="tab" aria-controls="tabs-messages" aria-selected="false">Messages</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a href="#tabs-contact" class="nav-link disabled pointer-events-none block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent" id="tabs-contact-tab" data-bs-toggle="pill" data-bs-target="#tabs-contact" role="tab" aria-controls="tabs-contact" aria-selected="false">Contact</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="tabs-tabContent">
-                        <div class="tab-pane fade show active" id="tabs-home" role="tabpanel" aria-labelledby="tabs-home-tab">
-                            Tab 1 content
-                        </div>
-                        <div class="tab-pane fade" id="tabs-profile" role="tabpanel" aria-labelledby="tabs-profile-tab">
-                            Tab 2 content
-                        </div>
-                        <div class="tab-pane fade" id="tabs-messages" role="tabpanel" aria-labelledby="tabs-profile-tab">
-                            Tab 3 content
-                        </div>
-                        <div class="tab-pane fade" id="tabs-contact" role="tabpanel" aria-labelledby="tabs-contact-tab">
-                            Tab 4 content
-                        </div>
-                    </div>
-
-
-                    <div id="carouselExampleCaptions" class="carousel slide relative" data-bs-ride="carousel">
-                        <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
-                            @foreach($check_result as $check_result_row)
-                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ $loop->index }}" @if ($loop->last) class="active" aria-current="true" @endif aria-label="Slide {{ $loop->index }}"></button>
-                            @endforeach
-                        </div>
-                        <div class="carousel-inner relative w-full overflow-hidden">
-
-                            @foreach($check_result as $check_result_row)
-                                <div class="carousel-item @if ($loop->last)active @endif relative float-left w-full">
-                                    <div class="row justify-content-md-center">
-                                        <div class="col-12 text-center my-3">
-                                            <p class="lead">チェック日： <span class="red-ic bold">{{ $check_result_row->created_at }}</span></p>
-                                        </div>
-                                        <hr>
-                                        <div class="row justify-content-md-center">
-                                            <div class="col-12 col-md-6">
-                                                <div class="chart-container" style="position: relative; height:50%; width:50%">
-                                                    <canvas id="myChart{{ $loop->index }}"></canvas>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12 col-md-4">
-                                                @foreach(explode('|', $check_result_row->type_result) as $data)
-
-                                                    @foreach($type_data as $type_data_row)
-                                                        @if ($data == $type_data_row->type_name)
-                                                            <section class="bg-gray-100 lg:py-12 lg:flex lg:justify-center">
-                                                                <div class="bg-white lg:mx-8 lg:flex lg:max-w-5xl lg:shadow-lg lg:rounded-lg">
-                                                                    <div class="lg:w-1/2">
-                                                                        <div class="h-64 bg-cover lg:rounded-lg lg:h-full" style="background-image:url('{{$type_data_row->image_path}}')"></div>
-                                                                    </div>
-
-                                                                    <div class="max-w-xl px-6 py-12 lg:max-w-5xl lg:w-1/2">
-                                                                        <img class="img-fluid" src="{{$type_data_row->mark_path}}" alt="status">
-                                                                        <h3 class="font-bold text-gray-800 md:text-3xl">
-                                                                            <span class="text-blue-400">{{$type_data_row->type_caption}}</span>
-                                                                            {{$type_data_row->description}}
-                                                                        </h3>
-                                                                        <p class="text-white mb-4">{{$type_data_row->contents}}</p>
-                                                                        <div class="card mb-3">
-                                                                            <div class="card-header orange">治す飲み物</div>
-                                                                            <hr>
-                                                                            <p class="">{{$type_data_row->drink}}</p>
-                                                                        </div>
-                                                                        <div class="card mb-5">
-                                                                            <div class="card-header bg-danger">治す食べ物</div>
-                                                                            <hr>
-                                                                            <p class="">{{$type_data_row->food}}</p>
-                                                                        </div>
-
-                                                                        <div class="mt-8">
-                                                                            <a class="px-5 py-2 font-semibold text-gray-100 transition-colors duration-200 transform bg-gray-900 rounded-md hover:bg-gray-700" href="{{ route('check.type.index') }}"><i class="fas fa-angle-right"></i> 最新の体質チェックを測る</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </section>
-                                                        @endif
-                                                    @endforeach
-                                                @endforeach
-                                            </div>
-                                            <div class="col-2"></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            @endforeach
-                        </div>
-                        <button
-                            class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
-                            type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button
-                            class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
-                            type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                            <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
-
+                    @if( count($type_result) == 0)
                     <div class="my-5">
                         <div class="row justify-content-center">
                             <div class="col-12 col-md-4">
                                 <p class="text-center">まだ症状チェックをしていないため結果はありません。ご自身の健康状態を診断してみましょう。</p>
-                                <a href="{{ route('check.type.index') }}" class="btn btn-lg btn-block btn-warning">診断する</a>
+                                <a href="{{ route('check.type.start') }}" class="btn btn-lg btn-block btn-warning">診断する</a>
                             </div>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -267,11 +291,11 @@
     {{-- グラフ描画用JS --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
     <script>
-        @foreach($check_result as $check_result_row)
+        @foreach($type_result as $check_result_row)
 
         var check_val = [{{ $check_result_row->soul_plus }},{{ $check_result_row->heat_plus }},{{ $check_result_row->blood_plus }},{{ $check_result_row->water_plus }},{{ $check_result_row->soul_minus }},{{ $check_result_row->heat_minus }},{{ $check_result_row->blood_minus }},{{ $check_result_row->water_minus }}];
 
-        var ctx{{ $loop->index }} = document.getElementById("myChart{{ $loop->index }}");
+        var ctx{{ $loop->index }} = document.getElementById("typeChart{{ $loop->index }}");
         var myChart{{ $loop->index }} = new Chart(ctx{{ $loop->index }}, {
             type: 'radar',
             data: {

@@ -9,17 +9,16 @@
                         <x-application-logo />
                     </a>
                 </div>
-
                 @if( Auth::check() )
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('mypage.index')" :active="request()->routeIs('mypage.index')">
                         {{ __('mypage') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('check.type.index')" :active="request()->routeIs('check.type.index')">
+                    <x-nav-link :href="route('check.type.start')" :active="request()->routeIs('check.type.start')">
                         {{ __('check_type') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('check.body.index')" :active="request()->routeIs('check.body.index')">
+                    <x-nav-link :href="route('check.body.start')" :active="request()->routeIs('check.body.start')">
                         {{ __('check_body') }}
                     </x-nav-link>
                 </div>

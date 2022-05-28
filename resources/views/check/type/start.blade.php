@@ -1,6 +1,5 @@
 <x-app-layout>
     @section('title', '体質チェックスタート')
-    @section('description', '体調管理のためにまずご自身の体質をチェックして理解することが肝心です。')
 
     <x-slot name="header">
     </x-slot>
@@ -11,7 +10,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="lg:text-center">
                         <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">type check</h2>
-                        <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">{{ __('type check') }}</p>
+                        <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">{{ __('check_type') }}</p>
                         <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">あてはまる症状に「はい」か「いいえ」で回答してください。</p>
                     </div>
 
@@ -38,7 +37,7 @@
                                     @endforeach
                                 </div>
 
-                                <div class="mt-10 items-center justify-center">
+                                <div class="mt-10 flex items-center justify-center">
                                     <x-button>
                                         {{ __('診断する') }}
                                     </x-button>
