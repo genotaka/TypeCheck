@@ -1,7 +1,9 @@
 <x-guest-layout>
+    @section('title', 'log in')
+
     <x-auth-card>
         <x-slot name="logo">
-            <img src="{{ asset('img/check/main1.png') }}" class="" alt="">
+            <img src="{{ asset('img/check/main_cn.png') }}" class="" alt="">
         </x-slot>
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />

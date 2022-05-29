@@ -10,13 +10,7 @@ use Illuminate\Support\Facades\Session;
 
 class TypeCheckController extends Controller
 {
-    //
-    public function index(){
-        return view('check.type.index');
-    }
-
     public function check(){
-
         $qList = DB::table('type_check_masters')->whereNull('deleted_at')->orderBy('sort_no','asc')->get();
 
         return view('check.type.start', ['question' => $qList]);
@@ -24,7 +18,7 @@ class TypeCheckController extends Controller
 
     public function submit(Request $request){
 
-        // 現在日時のインスタンス生成（データ登録用）
+        // 現在日時のインスタンス生成（データ登録用） TODO: タイムゾーンは中国のモノに修正したほうがよろしいかと。
         $datetime = new Carbon('now', 'Asia/Tokyo');
 
         // POSTリクエストをコレクションに変換
@@ -41,20 +35,26 @@ class TypeCheckController extends Controller
         // 最大値を計算するため各カラムを集計して別の配列に格納
         $temp_array = [
             'soul_plus' => $result_db->sum('soul_plus'),
-            'soul_minus' => $result_db->sum('soul_minus'),
             'blood_plus' => $result_db->sum('blood_plus'),
-            'blood_minus' => $result_db->sum('blood_minus'),
             'water_plus' => $result_db->sum('water_plus'),
-            'water_minus' => $result_db->sum('water_minus'),
             'heat_plus' => $result_db->sum('heat_plus'),
+            'soul_minus' => $result_db->sum('soul_minus'),
+            'blood_minus' => $result_db->sum('blood_minus'),
+            'water_minus' => $result_db->sum('water_minus'),
             'heat_minus' => $result_db->sum('heat_minus')
         ];
 
+        // 計算結果のMAX値を取得（計算用）
         $max_val = collect($temp_array)->max();
 
+        // カウントアップ用
+        $i = 0;
+
+        // MAXのカラムデータを抽出する
         foreach ($temp_array as $arr_row_key => $arr_row_val){
-            if ($arr_row_val == $max_val){
+            if ($arr_row_val == $max_val && $i < 3){
                 $new_array[] = $arr_row_key;
+                $i++;
             }
         };
 
@@ -77,12 +77,12 @@ class TypeCheckController extends Controller
             'updated_at' => $datetime
         ];
 
+        // データ登録実行
         DB::table('type_check_results')->insert($registration);
 
         // 登録が完了したらセッションの値を削除する（POSTデータだけ）
         Session::forget('check_result');
 
-
-        return view('check.type.result');
+        return redirect('mypage');
     }
 }

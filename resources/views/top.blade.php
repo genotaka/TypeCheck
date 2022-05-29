@@ -1,16 +1,17 @@
 <x-guest-layout>
+    @section('title', 'top')
+
     <!-- component -->
     <div class="py-12">
         <div class="flex items-center justify-center py-10">
             <img src="{{ asset('img/common/brand01.svg') }}" class="w-3/12" alt="">
         </div>
         <div class="flex items-center justify-center py-10">
-            <img src="{{ asset('img/check/main1.png') }}" class="w-3/12" alt="">
+            <img src="{{ asset('img/check/main_cn.png') }}" class="w-3/12" alt="">
         </div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <p>{{ __('top_text') }}</p>
+            <div class="overflow-hidden">
+                <div class="p-6">
                     @if( !Auth::check() )
                     <div class="flex items-center justify-center my-4">
                         <x-label>{{ __('診断にはログインもしくはアカウント登録が必要です。') }}

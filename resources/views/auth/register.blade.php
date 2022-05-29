@@ -1,9 +1,9 @@
 <x-guest-layout>
+    @section('title', 'register')
+
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+            <img src="{{ asset('img/check/main_cn.png') }}" class="" alt="">
         </x-slot>
 
         <!-- Validation Errors -->

@@ -40,13 +40,14 @@
                         <div class="mx-auto px-6 py-16">
                             <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" id="tabs-tab" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <a href="#tabs-home" class="nav-link block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent active" id="tabs-home-tab" data-bs-toggle="pill" data-bs-target="#tabs-home" role="tab" aria-controls="tabs-home" aria-selected="true">{{__('check_type')}}</a>
+                                    <a href="#tabs-home" class="nav-link block font-medium text-2xl leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent active" id="tabs-home-tab" data-bs-toggle="pill" data-bs-target="#tabs-home" role="tab" aria-controls="tabs-home" aria-selected="true">{{__('check_type')}}</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <a href="#tabs-profile" class="nav-link block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent" id="tabs-profile-tab" data-bs-toggle="pill" data-bs-target="#tabs-profile" role="tab" aria-controls="tabs-profile" aria-selected="false">{{__('check_body')}}</a>
+                                    <a href="#tabs-profile" class="nav-link block font-medium text-2xl leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent" id="tabs-profile-tab" data-bs-toggle="pill" data-bs-target="#tabs-profile" role="tab" aria-controls="tabs-profile" aria-selected="false">{{__('check_body')}}</a>
                                 </li>
                             </ul>
-                            <div class="tab-content" id="tabs-tabContent">
+                            <hr>
+                            <div class="tab-content py-10" id="tabs-tabContent">
                                 <div class="tab-pane fade show active" id="tabs-home" role="tabpanel" aria-labelledby="tabs-home-tab">
                                     <div class="flex items-center justify-center">
                                         <h1 class="text-3xl">あなたの体質タイプ判定</h1>
@@ -63,7 +64,7 @@
                                                 <div class="carousel-item @if ($loop->last)active @endif relative float-left w-full items-center justify-center">
                                                     <div class="row justify-content-md-center">
                                                         <div class="col-12 text-center my-3">
-                                                            <p class="lead">チェック日： <span class="red-ic bold">{{ $check_result_row->created_at }}</span></p>
+                                                            <p class="text-2xl">チェック日： <span class="text-red-800 bold">{{ $check_result_row->created_at }}</span></p>
                                                         </div>
                                                         <hr>
                                                         <div class="justify-center">
@@ -73,46 +74,56 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-12 col-md-4">
+                                                            <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" id="tabs-tabFill" role="tablist">
                                                                 @foreach(explode('|', $check_result_row->type_result) as $data)
-
+                                                                <li class="nav-item flex-auto text-center" role="presentation">
+                                                                    <a href="#tabs-{{ $loop->parent->index }}-{{ $loop->index }}" class="nav-link w-full block font-medium text-xl leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent @if ($loop->last)active @endif"
+                                                                       data-bs-toggle="pill" aria-selected="@if ($loop->last)true @else false @endif">タイプ {{ $loop->index }}</a>
+                                                                </li>
+                                                                @endforeach
+                                                            </ul>
+                                                            <div class="tab-content" id="tabs-tabContentFill">
+                                                                @foreach(explode('|', $check_result_row->type_result) as $data)
                                                                     @foreach($type_data as $type_data_row)
                                                                         @if ($data == $type_data_row->type_name)
-                                                                            <section class="bg-gray-100 lg:py-12 lg:flex lg:justify-center">
-                                                                                <div class="bg-white lg:mx-8 lg:flex lg:max-w-5xl lg:shadow-lg lg:rounded-lg">
-                                                                                    <div class="lg:w-1/2">
-                                                                                        <div class="h-64 bg-cover lg:rounded-lg lg:h-full" style="background-image:url('{{$type_data_row->image_path}}')"></div>
-                                                                                    </div>
-
-                                                                                    <div class="max-w-xl px-6 py-12 lg:max-w-5xl lg:w-1/2">
-                                                                                        <img class="img-fluid" src="{{$type_data_row->mark_path}}" alt="status">
-                                                                                        <h3 class="font-bold text-gray-800 md:text-3xl">
-                                                                                            <span class="text-blue-400">{{$type_data_row->type_caption}}</span>
-                                                                                            {{$type_data_row->description}}
-                                                                                        </h3>
-                                                                                        <p class="text-amber-900 mb-4">{{$type_data_row->contents}}</p>
-                                                                                        <div class="card mb-3">
-                                                                                            <div class="card-header orange">治す飲み物</div>
-                                                                                            <hr>
-                                                                                            <p class="">{{$type_data_row->drink}}</p>
-                                                                                        </div>
-                                                                                        <div class="card mb-5">
-                                                                                            <div class="card-header bg-danger">治す食べ物</div>
-                                                                                            <hr>
-                                                                                            <p class="">{{$type_data_row->food}}</p>
+                                                                            <div class="tab-pane fade @if ($loop->parent->last)show active @endif" id="tabs-{{ $loop->parent->parent->index }}-{{ $loop->parent->index }}">
+                                                                                <section class="bg-gray-100 lg:py-12 lg:flex lg:justify-center">
+                                                                                    <div class="bg-white lg:mx-8 lg:flex lg:max-w-5xl lg:shadow-lg lg:rounded-lg">
+                                                                                        <div class="lg:w-1/3">
+                                                                                            <div class="h-64 bg-cover lg:rounded-lg lg:h-full" style="background-image:url('{{$type_data_row->image_path}}')"></div>
                                                                                         </div>
 
-                                                                                        <div class="mt-8">
-                                                                                            <a class="px-5 py-2 font-semibold text-gray-100 transition-colors duration-200 transform bg-gray-900 rounded-md hover:bg-gray-700" href="{{ route('check.type.start') }}"><i class="fas fa-angle-right"></i> 最新の体質チェックを測る</a>
+                                                                                        <div class="max-w-xl px-6 py-12 lg:max-w-5xl lg:w-2/3">
+                                                                                            <img class="img-fluid" src="{{$type_data_row->mark_path}}" alt="status">
+                                                                                            <h3 class="font-bold text-gray-800 md:text-3xl">
+                                                                                                <span class="text-blue-400">{{$type_data_row->type_caption}}</span>
+                                                                                                {{$type_data_row->description}}
+                                                                                            </h3>
+                                                                                            <p class="text-amber-900 mb-4">{{$type_data_row->contents}}</p>
+
+                                                                                            <!-- 改善する食材 -->
+                                                                                            <div class="mt-4 lg:mt-0 lg:row-span-2">
+                                                                                                <div>
+                                                                                                    <h3 class="text-2xl text-gray-900 font-medium">直す食べ物</h3>
+                                                                                                    <hr>
+                                                                                                    <p class="">{{$type_data_row->food}}</p>
+                                                                                                </div>
+                                                                                                <div class="mt-10">
+                                                                                                    <h3 class="text-2xl text-gray-900 font-medium">直す飲み物</h3>
+                                                                                                    <hr>
+                                                                                                    <p class="">{{$type_data_row->drink}}</p>
+                                                                                                </div>
+                                                                                            </div>
+
                                                                                         </div>
                                                                                     </div>
-                                                                                </div>
-                                                                            </section>
+                                                                                </section>
+                                                                            </div>
                                                                         @endif
                                                                     @endforeach
                                                                 @endforeach
                                                             </div>
-                                                            <div class="col-2"></div>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -138,6 +149,7 @@
                                     <div class="flex items-center justify-center">
                                         <h1 class="text-3xl">あなたの体型タイプ判定</h1>
                                     </div>
+
                                     <div id="carouselBodyCaptions" class="carousel slide relative" data-bs-ride="carousel">
                                         <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
                                             @foreach($body_result as $check_result_row)
@@ -178,7 +190,6 @@
                                                                     @endforeach
                                                                 @endforeach
                                                             </div>
-                                                            <div class="col-2"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -197,73 +208,6 @@
                                             <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
                                             <span class="visually-hidden">Next</span>
                                         </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white">
-                        <div class="pt-6">
-                            <!-- Image gallery -->
-                            <div class="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
-                                <div class="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
-                                    <img src="{{ asset('img/illustration/blood_minus_il.png') }}" alt="" class="w-full h-full object-center object-cover">
-                                </div>
-                                <div class="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
-                                    <img src="{{ asset('img/illustration/blood_minus_il.png') }}" alt="" class="w-full h-full object-center object-cover">
-                                </div>
-                                <div class="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4">
-                                    <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg" alt="Model wearing plain white basic tee." class="w-full h-full object-center object-cover">
-                                </div>
-                            </div>
-
-                            <!-- Product info -->
-                            <div class="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
-                                <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-                                    <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">あなたは血不足タイプです</h1>
-                                </div>
-
-                                <!-- 改善する食材 -->
-                                <div class="mt-4 lg:mt-0 lg:row-span-2">
-                                    <div>
-                                        <h3 class="text-3xl text-gray-900 font-medium">直す食べ物</h3>
-                                        <fieldset class="mt-4">
-                                            <div class="mt-4">
-                                                <ul role="list" class="pl-4 list-disc text-sm space-y-2">
-                                                    <li class="text-gray-400"><span class="text-gray-600">Hand cut and sewn locally</span></li>
-                                                    <li class="text-gray-400"><span class="text-gray-600">Dyed with our proprietary colors</span></li>
-                                                    <li class="text-gray-400"><span class="text-gray-600">Pre-washed &amp; pre-shrunk</span></li>
-                                                    <li class="text-gray-400"><span class="text-gray-600">Ultra-soft 100% cotton</span></li>
-                                                </ul>
-                                            </div>
-                                        </fieldset>
-                                    </div>
-                                    <div class="mt-10">
-                                        <h3 class="text-3xl text-gray-900 font-medium">直す飲み物</h3>
-                                        <fieldset class="mt-4">
-                                            <div class="mt-4">
-                                                <ul role="list" class="pl-4 list-disc text-sm space-y-2">
-                                                    <li class="text-gray-400"><span class="text-gray-600">Hand cut and sewn locally</span></li>
-                                                    <li class="text-gray-400"><span class="text-gray-600">Dyed with our proprietary colors</span></li>
-                                                    <li class="text-gray-400"><span class="text-gray-600">Pre-washed &amp; pre-shrunk</span></li>
-                                                    <li class="text-gray-400"><span class="text-gray-600">Ultra-soft 100% cotton</span></li>
-                                                </ul>
-                                            </div>
-                                        </fieldset>
-                                    </div>
-                                </div>
-
-                                <div class="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-                                    <!-- Description and details -->
-                                    <div>
-                                        <h3 class="sr-only">Description</h3>
-
-                                        <div class="space-y-6">
-                                            <p class="text-base text-gray-900">
-                                                血が不足していると。。。うんたらかんたら
-                                            </p>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
