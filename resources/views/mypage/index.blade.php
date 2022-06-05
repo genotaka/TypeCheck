@@ -43,7 +43,7 @@
                             @endif
 
                             <div id="carouselTypeCaptions" class="carousel slide relative carousel-dark" data-bs-ride="carousel">
-                                <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
+                                <div class="carousel-indicators absolute right-0 -bottom-12 left-0 flex justify-center p-0 mb-4">
                                     @foreach($type_result as $check_result_row)
                                         <button type="button" data-bs-target="#carouselTypeCaptions" data-bs-slide-to="{{ $loop->index }}" @if ($loop->last) class="active" aria-current="true" @endif aria-label="Slide {{ $loop->index }}"></button>
                                     @endforeach
@@ -60,7 +60,7 @@
                                                     <canvas id="typeChart{{ $loop->index }}"></canvas>
                                                 </div>
                                                 <div class="w-full pt-4 md:pt-12 font-bold text-red-800">
-                                                    <h3 class="text-center pb-2 md:hidden">あなたは以下のタイプです。</h3>
+                                                    <h3 class="text-center py-2 md:hidden border-t-2 border-b-2 border-red-800">下記の種類が特徴的なタイプ</h3>
 
                                                     <ul class="nav nav-tabs grid grid-cols-3 md:grid-cols-1 max-w-5xl gap-4" id="tabs-tabFill" role="tablist">
                                                         @foreach(explode('|', $check_result_row->type_result) as $data)
@@ -69,10 +69,10 @@
                                                                    data-bs-toggle="pill" aria-selected="@if ($loop->last)true @else false @endif">
                                                                     @foreach($type_data as $type_data_row)
                                                                         @if ($data == $type_data_row->type_name)
-                                                                            <img class="img-fluid" src="{{$type_data_row->mark_path}}" alt="status">
-                                                                            <h3 class="font-bold text-gray-800 md:text-3xl">
-                                                                                <span class="text-blue-400">{{$type_data_row->type_caption}}</span>
-                                                                            </h3>
+                                                                            <div class="grid md:grid-cols-2 items-center text-center">
+                                                                                <img class="w-24" src="{{$type_data_row->mark_path}}" alt="status">
+                                                                                <h3 class="font-bold text-gray-800 md:text-3xl text-blue-400">{{$type_data_row->type_caption}}</h3>
+                                                                            </div>
                                                                         @endif
                                                                     @endforeach
                                                                 </a>
@@ -89,16 +89,18 @@
                                                             <div class="tab-pane fade @if ($loop->parent->last)show active @endif" id="tabs-{{ $loop->parent->parent->index }}-{{ $loop->parent->index }}">
                                                                 <section class="bg-gray-100 lg:py-12 lg:flex lg:justify-center">
                                                                     <div class="bg-white lg:mx-8 lg:flex lg:max-w-5xl lg:shadow-lg lg:rounded-lg">
-                                                                        <div class="lg:w-1/3">
-                                                                            <div class="h-64 bg-cover lg:rounded-lg lg:h-full" style="background-image:url('{{$type_data_row->image_path}}')"></div>
+                                                                        <div class="md:w-1/3">
+                                                                            <div class="h-72 bg-cover lg:rounded-lg lg:h-full" style="background-image:url('{{$type_data_row->image_path}}')"></div>
                                                                         </div>
-                                                                        <div class="max-w-xl px-6 py-12 lg:max-w-5xl lg:w-2/3">
-                                                                            <img class="img-fluid" src="{{$type_data_row->mark_path}}" alt="status">
-                                                                            <h3 class="font-bold text-gray-800 md:text-3xl">
-                                                                                <span class="text-blue-400">{{$type_data_row->type_caption}}</span>
-                                                                                {{$type_data_row->description}}
-                                                                            </h3>
-                                                                            <p class="text-amber-900 mb-4">{{$type_data_row->contents}}</p>
+                                                                        <div class="max-w-xl px-6 py-12 lg:max-w-5xl md:w-2/3">
+                                                                            <div class="grid grid-cols-2 gap-1">
+                                                                                <img class="w-24" src="{{$type_data_row->mark_path}}" alt="mark">
+                                                                                <h3 class="font-bold text-gray-800 md:text-3xl">
+                                                                                    <span class="text-blue-400">{{$type_data_row->type_caption}}</span>
+                                                                                    {{$type_data_row->description}}
+                                                                                </h3>
+                                                                            </div>
+                                                                            <p class="text-amber-900 my-6">{{$type_data_row->contents}}</p>
                                                                             <!-- 改善する食材 -->
                                                                             <div class="mt-4 lg:mt-0 lg:row-span-2">
                                                                                 <div>
@@ -115,15 +117,51 @@
                                                                         </div>
                                                                     </div>
                                                                 </section>
-                                                                <section>
-                                                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                                <section class="md:mt-10">
+                                                                    <div class="grid grid-cols-1 md:grid-cols-2 md:gap-8">
                                                                         <div>
-                                                                            <p>おすすめのサプリメント</p>
-                                                                            <img class="img-fluid" src="{{$type_data_row->mb_path}}" alt="magic_box_img">
+                                                                            <div class="relative mb-4">
+                                                                                <div class="group shadow-lg hover:shadow-2xl duration-200 delay-75 w-full bg-white rounded-sm py-6 pr-6 pl-9">
+                                                                                    <!-- Title -->
+                                                                                    <p class="text-2xl font-bold text-gray-500 group-hover:text-gray-700">おすすめのサプリメント</p>
+                                                                                    <div class="bg-blue-400 group-hover:bg-blue-600 h-full w-4 absolute top-0 left-0"> </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div>
+                                                                                <div class="flex flex-col items-center justify-center max-w-md mx-auto">
+                                                                                    <div class="w-full h-64 bg-gray-300 bg-center bg-cover shadow-md" style="background-image: url({{$type_data_row->mb_path}})"></div>
+                                                                                    <div class="w-72 -mt-4 overflow-hidden bg-white rounded-lg shadow-lg md:w-64 dark:bg-gray-800">
+                                                                                        <h3 class="py-2 font-bold tracking-wide text-center text-gray-800 dark:text-white">Magicbox<br>水プラスタイプサプリセット《30日分》</h3>
+
+                                                                                        <div class="flex items-center justify-between px-3 py-2 bg-gray-200 dark:bg-gray-700">
+                                                                                            <span class="font-bold text-gray-800 dark:text-gray-200">￥0,000</span>
+                                                                                            <button class="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">商品詳細</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                         <div>
-                                                                            <p>おすすめのエクササイズ</p>
-                                                                            <img class="img-fluid" src="{{$type_data_row->mb_path}}" alt="magic_box_img">
+                                                                            <div class="relative mb-4 mt-10 md:mt-0">
+                                                                                <div class="group shadow-lg hover:shadow-2xl duration-200 delay-75 w-full bg-white rounded-sm py-6 pr-6 pl-9">
+                                                                                    <!-- Title -->
+                                                                                    <p class="text-2xl font-bold text-gray-500 group-hover:text-gray-700">おすすめのエクササイズ</p>
+                                                                                    <div class="bg-pink-400 group-hover:bg-pink-600 h-full w-4 absolute top-0 left-0"> </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div>
+                                                                                <div class="flex flex-col items-center justify-center max-w-md mx-auto">
+                                                                                    <div class="w-full h-64 bg-gray-300 bg-center bg-cover shadow-md" style="background-image: url({{$type_data_row->mb_path}})"></div>
+                                                                                    <div class="w-72 -mt-4 overflow-hidden bg-white rounded-lg shadow-lg md:w-64 dark:bg-gray-800">
+                                                                                        <h3 class="py-2 font-bold tracking-wide text-center text-gray-800 dark:text-white">エクササイズ動画</h3>
+
+                                                                                        <div class="flex items-center justify-between px-3 py-2 bg-gray-200 dark:bg-gray-700">
+                                                                                            <span class="font-bold text-gray-800 dark:text-gray-200">18min36sec</span>
+                                                                                            <button class="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">再生</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </section>
