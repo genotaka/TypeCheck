@@ -8,7 +8,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="lg:text-center">
+                    <div class="text-center">
                         <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">type check</h2>
                         <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">{{ __('check_type') }}</p>
                         <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">あてはまる症状に「はい」か「いいえ」で回答してください。</p>
