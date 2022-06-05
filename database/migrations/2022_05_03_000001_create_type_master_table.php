@@ -18,10 +18,11 @@ return new class extends Migration
             $table->tinyInteger('sort_no')->unique();
             $table->string('type_name');
             $table->string('type_caption');
-            $table->string('mark_path');
             $table->string('description');
-            $table->string('image_path');
             $table->string('contents');
+            $table->string('mark_path');
+            $table->string('image_path');
+            $table->string('mb_path');
             $table->string('food');
             $table->string('drink');
             $table->softDeletesTz($column = 'deleted_at', $precision = 0);
