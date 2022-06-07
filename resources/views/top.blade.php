@@ -20,7 +20,7 @@
                         </x-label>
                     </div>
                     @endif
-                        <div class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
+                        <div class="space-y-10 md:space-y-0 flex flex-col md:flex-row gap-x-10 md:gap-y-10 justify-center items-center text-center">
                             <x-button>
                                 <a href="{{ route('check.type.start') }}">
                                     {{ __('check_type') }}

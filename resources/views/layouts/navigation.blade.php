@@ -32,7 +32,7 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="flex items-center text-sm font-medium text-white hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-white focus:border-gray-300 transition duration-150 ease-in-out">
-                            <div>{{ Auth::user()->name }}</div>
+                            <div>{{ Auth::user()->name }} さん</div>
 
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -69,8 +69,14 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('top')" :active="request()->routeIs('top')">
-                {{ __('Dashboard') }}
+            <x-responsive-nav-link :href="route('mypage.index')" :active="request()->routeIs('mypage.index')">
+                {{ __('mypage') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('check.type.start')" :active="request()->routeIs('check.type.start')">
+                {{ __('check_type') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('check.body.start')" :active="request()->routeIs('check.body.start')">
+                {{ __('check_body') }}
             </x-responsive-nav-link>
         </div>
 

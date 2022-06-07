@@ -60,7 +60,7 @@
                                                     <canvas id="typeChart{{ $loop->index }}"></canvas>
                                                 </div>
                                                 <div class="w-full pt-4 md:pt-12 font-bold text-red-800">
-                                                    <h3 class="text-center py-2 md:hidden border-t-2 border-b-2 border-red-800">下記の種類が特徴的なタイプ</h3>
+                                                    <h3 class="text-center py-2 border-t-2 border-b-2 border-red-800">下記の種類が特徴的なタイプ</h3>
 
                                                     <ul class="nav nav-tabs grid grid-cols-3 md:grid-cols-1 max-w-5xl gap-4" id="tabs-tabFill" role="tablist">
                                                         @foreach(explode('|', $check_result_row->type_result) as $data)
@@ -90,15 +90,16 @@
                                                                 <section class="bg-gray-100 lg:py-12 lg:flex lg:justify-center">
                                                                     <div class="bg-white lg:mx-8 lg:flex lg:max-w-5xl lg:shadow-lg lg:rounded-lg">
                                                                         <div class="md:w-1/3">
-                                                                            <div class="h-72 bg-cover lg:rounded-lg lg:h-full" style="background-image:url('{{$type_data_row->image_path}}')"></div>
+{{--                                                                            <div class="h-72 bg-fixed lg:rounded-lg lg:h-full" style="background-image:url('{{$type_data_row->image_path}}')"></div>--}}
+                                                                            <img src="{{$type_data_row->image_path}}" alt="">
                                                                         </div>
                                                                         <div class="max-w-xl px-6 py-12 lg:max-w-5xl md:w-2/3">
-                                                                            <div class="grid grid-cols-2 gap-1">
+                                                                            <div class="flex flex-row gap-1">
                                                                                 <img class="w-24" src="{{$type_data_row->mark_path}}" alt="mark">
-                                                                                <h3 class="font-bold text-gray-800 md:text-3xl">
+                                                                                <dev class="flex-2 font-bold text-gray-800 md:text-3xl">
                                                                                     <span class="text-blue-400">{{$type_data_row->type_caption}}</span>
-                                                                                    {{$type_data_row->description}}
-                                                                                </h3>
+                                                                                    <p>{{$type_data_row->description}}</p>
+                                                                                </dev>
                                                                             </div>
                                                                             <p class="text-amber-900 my-6">{{$type_data_row->contents}}</p>
                                                                             <!-- 改善する食材 -->
