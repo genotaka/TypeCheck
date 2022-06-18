@@ -3,7 +3,7 @@
 
     <x-auth-card>
         <x-slot name="logo">
-            <img src="{{ asset('img/check/main_cn.png') }}" class="" alt="">
+            <img src="{{ asset('img/common/brand01.svg') }}" alt="magic box">
         </x-slot>
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -15,7 +15,6 @@
             <!-- Email Address -->
             <div>
                 <x-label for="email" :value="__('Email')" />
-
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             </div>
 
@@ -33,19 +32,19 @@
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex flex-col md:flex-row items-center justify-end mt-4">
                 @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 mx-auto" href="{{ route('password.request') }}">
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900 mx-auto pb-4" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
                 @if (Route::has('register'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 mx-auto" href="{{ route('register') }}">
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900 mx-auto pb-4" href="{{ route('register') }}">
                         {{ __('register') }}
                     </a>
                 @endif
 
-                <x-button class="ml-3">
+                <x-button class="">
                     {{ __('Log in') }}
                 </x-button>
             </div>

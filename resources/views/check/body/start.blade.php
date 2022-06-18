@@ -9,9 +9,9 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="text-center">
-                        <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">body check</h2>
+                        <h2 class="text-base text-pink-600 font-semibold tracking-wide uppercase">body check</h2>
                         <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">{{ __('check_body') }}</p>
-                        <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">あてはまる症状に「はい」か「いいえ」で回答してください。</p>
+                        <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">{{ __('check_description') }}</p>
                     </div>
 
                     <div class="mt-10">
@@ -26,11 +26,11 @@
                                             <div class="grid w-full grid-cols-2 space-x-2 rounded-xl bg-gray-200 p-2">
                                                 <div>
                                                     <input type="radio" id="q{{ $question_row->id }}_yes" name="{{ $question_row->id }}" value="yes" class="peer hidden"  />
-                                                    <label for="q{{ $question_row->id }}_yes" class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white">{{__("yes")}}</label>
+                                                    <label for="q{{ $question_row->id }}_yes" class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-pink-500 peer-checked:font-bold peer-checked:text-white">{{__("yes")}}</label>
                                                 </div>
                                                 <div>
                                                     <input type="radio" id="q{{ $question_row->id }}_no" name="{{ $question_row->id }}" value="no"  class="peer hidden" checked />
-                                                    <label for="q{{ $question_row->id }}_no" class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white">{{__("no")}}</label>
+                                                    <label for="q{{ $question_row->id }}_no" class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-pink-500 peer-checked:font-bold peer-checked:text-white">{{__("no")}}</label>
                                                 </div>
                                             </div>
                                         </div>

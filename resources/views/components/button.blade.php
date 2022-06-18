@@ -1,5 +1,5 @@
-<button {{ $attributes->merge(['type' => 'submit', 'class' => 'relative group overflow-hidden px-6 h-12 rounded-full flex space-x-2 items-center bg-gradient-to-r from-pink-500 to-purple-500 hover:to-purple-600']) }}>
-    <span class="relative text-sm text-white">{{ $slot }}</span>
+<button {{ $attributes->merge(['type' => 'submit', 'class' => 'relative group overflow-hidden px-8 h-12 rounded-full flex space-x-2 items-center bg-gradient-to-r from-pink-500 to-purple-500 hover:to-purple-600']) }}>
+    <span class="relative text-white">{{ $slot }}</span>
     <div class="flex items-center -space-x-3 translate-x-3">
         <div class="w-2.5 h-[1.6px] rounded bg-white origin-left scale-x-0 transition duration-300 group-hover:scale-x-100"></div>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 stroke-white -translate-x-2 transition duration-300 group-hover:translate-x-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

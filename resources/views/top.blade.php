@@ -6,17 +6,22 @@
         <div class="flex items-center justify-center py-1 md:py-6">
             <img src="{{ asset('img/common/brand01.svg') }}" class="w-8/12 md:w-3/12" alt="">
         </div>
-        <div class="flex items-center justify-center py-5 md:py-10">
-            <img src="{{ asset('img/check/main_cn.png') }}" class="w-8/12 md:w-3/12" alt="">
+        <div class="flex flex-col items-center justify-center py-3 md:py-10">
+            <div class="border-4 md:border-8 border-gradient m-10">
+                <h1 class="p-8 md:p-24 text-xl md:text-3xl text-pink-600 md:font-bold text-center">{{ __('top_text') }}
+                    <br class="md:hidden">{{ __('top_text_2') }}
+                </h1>
+            </div>
+            <h2 class="text-2xl md:text-3xl font-bold mt-4 md:mt-10">{{ __('top_title') }} <span class="text-pink-600 italic">{{ __('top_title_2') }}</span></h2>
         </div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden">
                 <div class="p-6">
                     @if( !Auth::check() )
-                    <div class="flex items-center justify-center my-4">
-                        <x-label>{{ __('診断にはログインもしくはアカウント登録が必要です。') }}
-                            <br class="md:none">
-                            <a class="ml-3 text-blue-800 font-semibold" href="{{ route('login') }}">ログインはこちら</a>
+                    <div class="flex items-center justify-center my-4 pb-4 md:pb-6">
+                        <x-label>
+                            {{ __('login_info') }}
+                            <a class="ml-3 text-blue-800 font-semibold text-pink-600 underline" href="{{ route('login') }}">{{ __('login_link') }}</a>
                         </x-label>
                     </div>
                     @endif
