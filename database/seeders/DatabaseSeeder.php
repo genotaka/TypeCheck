@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             TypeCheckMaterSeeder::class,
             BodyMaterSeeder::class,
             TypeMaterSeeder::class,
+            ItemSeeder::class,
+            MovieSeeder::class,
         ]);
     }
 }

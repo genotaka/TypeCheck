@@ -18,12 +18,11 @@
     <body class="font-sans antialiased">
         <div class="min-h-screen">
             @include('layouts.navigation')
-
             <!-- Page Content -->
             <main>
                 {{ $slot }}
-                @include('layouts.footer')
             </main>
+            @include('layouts.footer')
         </div>
     </body>
 </html>

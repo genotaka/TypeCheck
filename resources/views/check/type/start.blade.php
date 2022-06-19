@@ -1,17 +1,17 @@
 <x-app-layout>
-    @section('title', '体質チェックスタート')
+    @section('title', 'TypeCheck')
 
     <x-slot name="header">
     </x-slot>
 
-    <div class="py-12">
+    <div class="pb-6 md:py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="text-center">
                         <h2 class="text-base text-pink-600 font-semibold tracking-wide uppercase">type check</h2>
                         <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">{{ __('check_type') }}</p>
-                        <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">{{ __('check_description') }}</p>
+                        <p class="mt-4 max-w-2xl md:text-xl text-gray-500 lg:mx-auto">{{ __('check_description') }}</p>
                     </div>
 
                     <div class="mt-10">
@@ -39,7 +39,7 @@
 
                                 <div class="mt-10 flex items-center justify-center">
                                     <x-button>
-                                        {{ __('診断する') }}
+                                        {{ __('submit') }}
                                     </x-button>
                                 </div>
                             </div>

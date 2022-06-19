@@ -1,5 +1,5 @@
 <x-app-layout>
-    @section('title', 'マイページ')
+    @section('title', 'mypage')
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -29,7 +29,7 @@
                             @if( count($type_result) == 0)
                             <div class="my-5">
                                 <div class="mt-10 flex flex-wrap items-center justify-center">
-                                    <p class="w-full text-center py-6">まだ症状チェックをしていないため結果はありません。ご自身の健康状態を診断してみましょう。</p>
+                                    <p class="w-full text-center p-6">まだ症状チェックをしていないため結果はありません。<br class="md:hidden">ご自身の健康状態を診断してみましょう。</p>
                                     <x-button>
                                         <a href="{{ route('check.type.start') }}">
                                             {{ __('check_type') }}
@@ -68,7 +68,7 @@
                                                                 @if ($data == $type_data_row->type_name)
                                                                     <div class="grid md:grid-cols-2 items-center text-center">
                                                                         <img class="w-24" src="{{$type_data_row->mark_path}}" alt="status">
-                                                                        <h3 class="font-bold text-gray-800 md:text-3xl text-blue-400">{{$type_data_row->type_caption}}</h3>
+                                                                        <h3 class="font-bold text-gray-800 md:text-3xl text-blue-400 mt-2 md:mt-0">{{$type_data_row->type_caption}}</h3>
                                                                     </div>
                                                                 @endif
                                                             @endforeach
@@ -86,10 +86,10 @@
                                                     <div class="tab-pane fade @if ($loop->parent->last)show active @endif" id="tabs-{{ $loop->parent->parent->index }}-{{ $loop->parent->index }}">
                                                         <section class="bg-gray-100 lg:py-12 lg:flex lg:justify-center">
                                                             <div class="bg-white lg:mx-8 lg:flex lg:max-w-5xl lg:shadow-lg lg:rounded-lg">
-                                                                <div class="md:w-1/2 md:mx-12 md:my-20">
+                                                                <div class="md:w-1/2 md:mx-12 mt-8 md:my-20">
                                                                     <img src="{{$type_data_row->image_path}}" alt="">
                                                                 </div>
-                                                                <div class="max-w-xl px-6 py-12 lg:max-w-5xl md:w-1/2 md:mr-4">
+                                                                <div class="max-w-xl px-6 md:py-12 lg:max-w-5xl md:w-1/2 md:mr-4">
                                                                     <p class="text-blue-400 my-6 md:text-lg break-words">{{$type_data_row->contents}}</p>
                                                                     <div class="my-4 lg:mt-0 lg:row-span-2">
                                                                         <h3 class="text-2xl text-gray-900 font-medium">{{ __('food_title') }}</h3>
@@ -104,7 +104,8 @@
                                                                 </div>
                                                             </div>
                                                         </section>
-                                                        <section class="grid grid-cols-1 md:grid-cols-2 md:gap-8 md:mt-10">
+
+                                                        <section class="grid grid-cols-1 md:grid-cols-2 md:gap-8 mt-10">
                                                             <div>
                                                                 <div class="relative mb-4">
                                                                     <div class="group shadow-lg hover:shadow-2xl duration-200 delay-75 w-full bg-white rounded-sm py-6 pr-6 pl-9">
@@ -113,19 +114,21 @@
                                                                         <div class="bg-blue-400 group-hover:bg-blue-600 h-full w-4 absolute top-0 left-0"> </div>
                                                                     </div>
                                                                 </div>
-                                                                <div>
+                                                                @foreach($items as $item)
+                                                                    @if($type_data_row->id == $item->type_id)
                                                                     <div class="flex flex-col items-center justify-center max-w-md mx-auto">
-                                                                        <div class="w-full h-64 bg-gray-300 bg-center bg-cover shadow-md" style="background-image: url({{$type_data_row->mb_path}})"></div>
+                                                                        <div class="w-full h-64 bg-gray-300 bg-center bg-cover shadow-md" style="background-image: url({{$item->img_path}})"></div>
                                                                         <div class="w-72 -mt-4 overflow-hidden bg-white rounded-lg shadow-lg md:w-9/12">
-                                                                            <h3 class="py-2 font-bold tracking-wide text-center text-gray-800">Magicbox<br>水プラスタイプサプリセット《30日分》</h3>
+                                                                            <h3 class="py-2 font-bold tracking-wide text-center text-gray-800">Magicbox<br>{{$item->description}}</h3>
 
                                                                             <div class="flex items-center justify-between px-3 py-2 bg-gray-200">
-                                                                                <span class="font-bold text-gray-800">￥0,000</span>
-                                                                                <button class="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">商品詳細</button>
+                                                                                <span class="font-bold text-gray-800">&yen;{{$item->price}}</span>
+                                                                                <a class="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">商品詳細</a>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
+                                                                    @endif
+                                                                @endforeach
                                                             </div>
                                                             <div>
                                                                 <div class="relative mb-4 mt-10 md:mt-0">
@@ -135,19 +138,21 @@
                                                                         <div class="bg-blue-400 group-hover:bg-blue-600 h-full w-4 absolute top-0 left-0"> </div>
                                                                     </div>
                                                                 </div>
-                                                                <div>
+                                                                @foreach($movies as $movie)
+                                                                    @if($type_data_row->id == $movie->type_id)
                                                                     <div class="flex flex-col items-center justify-center max-w-md mx-auto">
-                                                                        <div class="w-full h-64 bg-gray-300 bg-center bg-cover shadow-md" style="background-image: url({{$type_data_row->mb_path}})"></div>
+                                                                        <div class="w-full h-64 bg-gray-300 bg-center bg-cover shadow-md" style="background-image: url({{$movie->poster_path}})"></div>
                                                                         <div class="w-72 -mt-4 overflow-hidden bg-white rounded-lg shadow-lg  md:w-9/12">
-                                                                            <h3 class="py-2 font-bold tracking-wide text-center text-gray-800">エクササイズ動画</h3>
+                                                                            <h3 class="py-2 font-bold tracking-wide text-center text-gray-800">エクササイズ動画<br>{{$movie->description}}</h3>
 
                                                                             <div class="flex items-center justify-between px-3 py-2 bg-gray-200">
-                                                                                <span class="font-bold text-gray-800">18min36sec</span>
+                                                                                <span class="font-bold text-gray-800">{{$movie->length}}</span>
                                                                                 <button class="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">再生</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
+                                                                    @endif
+                                                                @endforeach
                                                             </div>
                                                         </section>
                                                     </div>

@@ -3,7 +3,7 @@
 
     <x-auth-card>
         <x-slot name="logo">
-            <img src="{{ asset('img/check/main_cn.png') }}" class="" alt="">
+            <img src="{{ asset('img/common/brand01.svg') }}" alt="magic box">
         </x-slot>
 
         <!-- Validation Errors -->

@@ -21,6 +21,10 @@ class MyPageController extends Controller
         // 体型データを取得
         $bodyVal = DB::table('body_masters')->whereNull('deleted_at')->orderBy('created_at','asc')->get();
 
-        return view('mypage.index', ['type_result' => $checkResultTypeVal, 'body_result' => $checkResultBodyVal, 'type_data' => $typeVal, 'body_data' => $bodyVal]);
+        // 商品データ、動画データを取得
+        $itemVal = DB::table('items')->whereNull('deleted_at')->orderBy('created_at','asc')->get();
+        $movieVal = DB::table('movies')->whereNull('deleted_at')->orderBy('created_at','asc')->get();
+
+        return view('mypage.index', ['type_result' => $checkResultTypeVal, 'body_result' => $checkResultBodyVal, 'type_data' => $typeVal, 'body_data' => $bodyVal, 'items' => $itemVal, 'movies' => $movieVal]);
     }
 }

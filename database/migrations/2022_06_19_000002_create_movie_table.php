@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('body_masters', function (Blueprint $table) {
+        Schema::create('movies', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('sort_no')->unique();
-            $table->string('body_name');
+            $table->integer('type_id');
+            $table->integer('body_id');
+            $table->string('movie_name');
             $table->string('description');
-            $table->string('contents');
-            $table->string('mark_path');
-            $table->string('image_path');
+            $table->string('movie_path');
+            $table->string('poster_path');
+            $table->string('length');
             $table->softDeletesTz($column = 'deleted_at', $precision = 0);
             $table->timestamps();
         });
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('body_masters');
+        Schema::dropIfExists('movies');
     }
 };
