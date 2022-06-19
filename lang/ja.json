@@ -30,5 +30,13 @@
     "yes": "はい",
     "no": "いいえ",
     "submit": "診断する",
+    "soul_plus": "気の滞り",
+    "soul_minus": "気不足",
+    "blood_plus": "血の滞り",
+    "blood_minus": "血不足",
+    "water_plus": "水分過剰",
+    "water_minus": "水分不足",
+    "heat_plus": "熱過剰",
+    "heat_minus": "熱不足",
     "type check": "タイプ診断"
 }

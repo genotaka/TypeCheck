@@ -59,14 +59,14 @@
                                             <div class="w-full pt-4 md:pt-12 font-bold text-blue-400">
                                                 <h3 class="text-center py-2 border-t-2 border-b-2 border-blue-400">下記の種類が特徴的なタイプ</h3>
 
-                                                <ul class="nav nav-tabs grid grid-cols-3 md:grid-cols-1 max-w-5xl gap-4" id="tabs-tabFill" role="tablist">
+                                                <ul class="nav nav-tabs grid grid-cols-3 md:grid-cols-1 " id="tabs-tabFill" role="tablist">
                                                 @foreach(explode('|', $check_result_row->type_result) as $data)
                                                     <li class="nav-item grid text-center" role="presentation">
                                                         <a href="#tabs-{{ $loop->parent->index }}-{{ $loop->index }}" class="nav-link w-full block font-medium text-xl leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent @if ($loop->last)active @endif"
                                                            data-bs-toggle="pill" aria-selected="@if ($loop->last)true @else false @endif">
                                                             @foreach($type_data as $type_data_row)
                                                                 @if ($data == $type_data_row->type_name)
-                                                                    <div class="grid md:grid-cols-2 items-center text-center">
+                                                                    <div class="grid md:grid-cols-2 items-center text-center justify-center">
                                                                         <img class="w-24" src="{{$type_data_row->mark_path}}" alt="status">
                                                                         <h3 class="font-bold text-gray-800 md:text-3xl text-blue-400 mt-2 md:mt-0">{{$type_data_row->type_caption}}</h3>
                                                                     </div>
@@ -182,12 +182,12 @@
 
                         <div class="tab-pane fade" id="tabs-body" role="tabpanel" aria-labelledby="tabs-body-tab">
                             <div class="flex items-center justify-center">
-                                <h1 class="text-3xl">あなたの体型タイプ判定</h1>
+                                <h1 class="text-2xl md:text-3xl">あなたの体型タイプ判定</h1>
                             </div>
                             @if( count($body_result) == 0)
                                 <div class="my-5">
                                     <div class="mt-10 flex flex-wrap items-center justify-center">
-                                        <p class="w-full text-center py-6">まだ症状チェックをしていないため結果はありません。ご自身の健康状態を診断してみましょう。</p>
+                                        <p class="w-full text-center p-6">まだ症状チェックをしていないため結果はありません。<br class="md:hidden">ご自身の健康状態を診断してみましょう。</p>
                                         <x-button>
                                             <a href="{{ route('check.body.start') }}">
                                                 {{ __('check_body') }}
@@ -196,48 +196,66 @@
                                     </div>
                                 </div>
                             @endif
+
                             <div id="carouselBodyCaptions" class="carousel slide relative" data-bs-ride="carousel">
                                 <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
                                     @foreach($body_result as $check_result_row)
                                         <button type="button" data-bs-target="#carouselBodyCaptions" data-bs-slide-to="{{ $loop->index }}" @if ($loop->last) class="active" aria-current="true" @endif aria-label="Slide {{ $loop->index }}"></button>
                                     @endforeach
                                 </div>
-                                <div class="carousel-inner relative w-full overflow-hidden">
+
+                                <div class="carousel-inner relative w-full overflow-hidden px-6">
                                     @foreach($body_result as $check_result_row)
                                         <div class="carousel-item @if ($loop->last)active @endif relative float-left w-full items-center justify-center">
-                                            <div class="row justify-content-md-center">
-                                                <div class="col-12 text-center my-3">
-                                                    <p class="lead">チェック日： <span class="red-ic bold">{{ $check_result_row->created_at }}</span></p>
-                                                </div>
-                                                <hr>
-                                                <div class="justify-center">
-                                                    <div class="col-12 col-md-4">
-                                                        @foreach(explode('|', $check_result_row->body_result) as $data)
-                                                            @foreach($body_data as $body_data_row)
-                                                                @if ($data == $body_data_row->body_name)
-                                                                    <section class="bg-gray-100 lg:py-12 lg:flex lg:justify-center">
-                                                                        <div class="bg-white lg:mx-8 lg:flex lg:max-w-5xl lg:shadow-lg lg:rounded-lg">
-                                                                            <div class="lg:w-1/2">
-                                                                                <div class="h-64 bg-cover lg:rounded-lg lg:h-full" style="background-image:url('{{$body_data_row->image_path}}')"></div>
-                                                                            </div>
-
-                                                                            <div class="max-w-xl px-6 py-12 lg:max-w-5xl lg:w-1/2">
-                                                                                <h3 class="font-bold text-gray-800 text-xl md:text-3xl pb-12">
-                                                                                    {{$body_data_row->description}}
-                                                                                </h3>
-                                                                                <p class="text-blue-400 my-6 md:text-lg break-words">{{$body_data_row->contents}}</p>
-                                                                            </div>
+                                            <div class="text-center my-3">
+                                                <p class="md:text-2xl">チェック日： <span class="text-red-800 bold">{{ $check_result_row->created_at }}</span></p>
+                                            </div>
+                                            <hr>
+                                            <div class="w-full pt-4 md:pt-12 font-bold text-blue-400">
+                                                <h3 class="text-center py-2 border-t-2 border-b-2 border-blue-400">あなたの主な体型</h3>
+                                                    <ul class="nav nav-tabs grid grid-cols-3 gap-4" id="tabs-tabFill" role="tablist">
+                                                    @foreach(explode('|', $check_result_row->body_result) as $data)
+                                                        <li class="nav-item grid text-center" role="presentation">
+                                                            <a href="#body_tabs-{{ $loop->parent->index }}-{{ $loop->index }}" class="nav-link w-full block font-medium text-xl leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent @if ($loop->last)active @endif"
+                                                               data-bs-toggle="pill" aria-selected="@if ($loop->last)true @else false @endif">
+                                                                @foreach($body_data as $body_data_row)
+                                                                    @if ($data == $body_data_row->body_name)
+                                                                        <div class="grid items-center text-center justify-center">
+                                                                            <img class="w-24" src="{{$body_data_row->mark_path}}" alt="status">
                                                                         </div>
-                                                                    </section>
-                                                                @endif
-                                                            @endforeach
-                                                        @endforeach
-                                                    </div>
-                                                </div>
+                                                                    @endif
+                                                                @endforeach
+                                                            </a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+
+                                            <div class="tab-content" id="tabs-tabContentFill">
+                                                @foreach(explode('|', $check_result_row->body_result) as $data)
+                                                    @foreach($body_data as $body_data_row)
+                                                        @if ($data == $body_data_row->body_name)
+                                                            <div class="tab-pane fade @if ($loop->parent->last)show active @endif" id="body_tabs-{{ $loop->parent->parent->index }}-{{ $loop->parent->index }}">
+                                                                <section class="bg-gray-100 lg:py-12 lg:flex lg:justify-center">
+                                                                    <div class="bg-white lg:mx-8 lg:flex lg:max-w-5xl lg:shadow-lg lg:rounded-lg">
+                                                                        <div class="md:w-1/2 md:mx-12 mt-8 md:my-20">
+                                                                            <img src="{{$body_data_row->image_path}}" alt="">
+                                                                        </div>
+                                                                        <div class="max-w-xl px-6 md:py-12 lg:max-w-5xl md:w-1/2 md:mr-4">
+                                                                            <h2 class="text-gray-800 my-6 md:text-2xl break-words">{{$body_data_row->description}}</h2>
+                                                                            <p class="text-blue-400 my-6 md:text-lg break-words">{{$body_data_row->contents}}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </section>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                @endforeach
                                             </div>
                                         </div>
                                     @endforeach
                                 </div>
+
                                 <button
                                     class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
                                     type="button" data-bs-target="#carouselBodyCaptions" data-bs-slide="prev">
@@ -272,7 +290,7 @@
         var myChart{{ $loop->index }} = new Chart(ctx{{ $loop->index }}, {
             type: 'radar',
             data: {
-                labels: ['気の滞り', '熱過剰', '血の滞り', '水分過剰', '気不足', '熱不足', '血不足', '水分不足'],
+                labels: ['{{ __("soul_plus") }}', '{{ __("heat_plus") }}', '{{ __("blood_plus") }}', '{{ __("water_plus") }}', '{{ __("soul_minus") }}', '{{ __("heat_minus") }}', '{{ __("blood_minus") }}', '{{ __("water_minus") }}'],
                 datasets: [{
                     label: '診断結果',
                     data: check_val,
