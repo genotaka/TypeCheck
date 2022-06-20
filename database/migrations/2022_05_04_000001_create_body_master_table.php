@@ -18,9 +18,13 @@ return new class extends Migration
             $table->tinyInteger('sort_no')->unique();
             $table->string('body_name');
             $table->string('description');
-            $table->string('contents');
+            $table->text('feature_contents');
+            $table->text('cause_contents');
+            $table->text('improvement_contents');
             $table->string('mark_path');
             $table->string('image_path');
+            $table->string('food');
+            $table->string('drink');
             $table->softDeletesTz($column = 'deleted_at', $precision = 0);
             $table->timestamps();
         });

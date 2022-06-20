@@ -74,6 +74,6 @@ class BodyCheckController extends Controller
         // 登録が完了したらセッションの値を削除する（POSTデータだけ）
         Session::forget('check_result');
 
-        return redirect('mypage');
+        return redirect('mypage')->with(['message' => 'bodySubmit']);
     }
 }

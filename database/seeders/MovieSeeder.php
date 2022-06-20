@@ -17,7 +17,7 @@ class MovieSeeder extends Seeder
         DB::table('movies')->insert([
             [
                 'type_id' => '1',
-                'body_id' => '',
+                'body_id' => '1',
                 'movie_name' => 'soul_plus',
                 'description' => '気プラスムービー',
                 'movie_path' => '/movie/soul_plus.mp4',
@@ -26,7 +26,7 @@ class MovieSeeder extends Seeder
             ],
             [
                 'type_id' => '2',
-                'body_id' => '',
+                'body_id' => '2',
                 'movie_name' => 'blood_plus',
                 'description' => '血プラスムービー',
                 'movie_path' => '/movie/blood_plus.mp4',
@@ -35,7 +35,7 @@ class MovieSeeder extends Seeder
             ],
             [
                 'type_id' => '3',
-                'body_id' => '',
+                'body_id' => '3',
                 'movie_name' => 'water_plus',
                 'description' => '水プラスムービー',
                 'movie_path' => '/movie/water_plus.mp4',
@@ -44,7 +44,7 @@ class MovieSeeder extends Seeder
             ],
             [
                 'type_id' => '4',
-                'body_id' => '',
+                'body_id' => '4',
                 'movie_name' => 'heat_plus',
                 'description' => '熱プラスムービー',
                 'movie_path' => '/movie/heat_plus.mp4',

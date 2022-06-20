@@ -38,5 +38,14 @@
     "water_minus": "水分不足",
     "heat_plus": "熱過剰",
     "heat_minus": "熱不足",
+    "item_title": "おすすめのサプリメント",
+    "item_link": "商品詳細",
+    "movie_title": "おすすめのエクササイズ",
+    "movie_play": "再生",
+    "type_check_title": "あなたの体質タイプ判定",
+    "type_check_result": "下記の種類が特徴的なタイプ",
+    "body_check_title": "あなたの体型タイプ判定",
+    "body_check_result": "あなたの主な体型",
+    "check_day": "チェック日",
     "type check": "タイプ診断"
 }

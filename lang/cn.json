@@ -30,6 +30,7 @@
     "yes": "是",
     "no": "不是",
     "submit": "诊断",
+    "graph_title": "测试结果",
     "soul_plus": "气滞",
     "soul_minus": "气虚",
     "blood_plus": "血瘀",
@@ -38,5 +39,14 @@
     "water_minus": "阴虚",
     "heat_plus": "湿热",
     "heat_minus": "肾阳虚",
+    "item_title": "健康食品推荐",
+    "item_link": "商品详情",
+    "movie_title": "运动推荐",
+    "movie_play": "重放",
+    "type_check_title": "你的体质类型结果",
+    "type_check_result": "你的体质类型",
+    "body_check_title": "你的体型结果",
+    "body_check_result": "你的体型",
+    "check_day": "检测日",
     "type check": "タイプ診断"
 }

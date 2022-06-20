@@ -24,7 +24,7 @@
                     <div class="tab-content py-10" id="tabs-tabContent">
                         <div class="tab-pane fade show active" id="tabs-type" role="tabpanel" aria-labelledby="tabs-type-tab">
                             <div class="flex items-center justify-center">
-                                <h1 class="text-2xl md:text-3xl">あなたの体質タイプ判定</h1>
+                                <h1 class="text-2xl md:text-3xl">{{ __('type_check_title') }}</h1>
                             </div>
                             @if( count($type_result) == 0)
                             <div class="my-5">
@@ -49,7 +49,7 @@
                                 @foreach($type_result as $check_result_row)
                                     <div class="carousel-item @if ($loop->last)active @endif relative float-left w-full items-center justify-center">
                                         <div class="text-center my-3">
-                                            <p class="md:text-2xl">チェック日： <span class="text-red-800 bold">{{ $check_result_row->created_at }}</span></p>
+                                            <p class="md:text-2xl">{{ __("check_day") }}： <span class="text-red-800 bold">{{ $check_result_row->created_at }}</span></p>
                                         </div>
                                         <hr>
                                         <div class="md:columns-2">
@@ -57,7 +57,7 @@
                                                 <canvas id="typeChart{{ $loop->index }}"></canvas>
                                             </div>
                                             <div class="w-full pt-4 md:pt-12 font-bold text-blue-400">
-                                                <h3 class="text-center py-2 border-t-2 border-b-2 border-blue-400">下記の種類が特徴的なタイプ</h3>
+                                                <h3 class="text-center py-2 border-t-2 border-b-2 border-blue-400">{{ __("type_check_result") }}</h3>
 
                                                 <ul class="nav nav-tabs grid grid-cols-3 md:grid-cols-1 " id="tabs-tabFill" role="tablist">
                                                 @foreach(explode('|', $check_result_row->type_result) as $data)
@@ -110,7 +110,7 @@
                                                                 <div class="relative mb-4">
                                                                     <div class="group shadow-lg hover:shadow-2xl duration-200 delay-75 w-full bg-white rounded-sm py-6 pr-6 pl-9">
                                                                         <!-- Title -->
-                                                                        <p class="text-2xl font-bold text-gray-500 group-hover:text-gray-700">おすすめのサプリメント</p>
+                                                                        <p class="text-2xl font-bold text-gray-500 group-hover:text-gray-700">{{ __("item_title") }}</p>
                                                                         <div class="bg-blue-400 group-hover:bg-blue-600 h-full w-4 absolute top-0 left-0"> </div>
                                                                     </div>
                                                                 </div>
@@ -119,11 +119,11 @@
                                                                     <div class="flex flex-col items-center justify-center max-w-md mx-auto">
                                                                         <div class="w-full h-64 bg-gray-300 bg-center bg-cover shadow-md" style="background-image: url({{$item->img_path}})"></div>
                                                                         <div class="w-72 -mt-4 overflow-hidden bg-white rounded-lg shadow-lg md:w-9/12">
-                                                                            <h3 class="py-2 font-bold tracking-wide text-center text-gray-800">Magicbox<br>{{$item->description}}</h3>
+                                                                            <h3 class="py-2 font-bold tracking-wide text-center text-gray-800">{{$item->description}}</h3>
 
                                                                             <div class="flex items-center justify-between px-3 py-2 bg-gray-200">
                                                                                 <span class="font-bold text-gray-800">&yen;{{$item->price}}</span>
-                                                                                <a class="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">商品詳細</a>
+                                                                                <a class="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">{{ __("item_link") }}</a>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -134,7 +134,7 @@
                                                                 <div class="relative mb-4 mt-10 md:mt-0">
                                                                     <div class="group shadow-lg hover:shadow-2xl duration-200 delay-75 w-full bg-white rounded-sm py-6 pr-6 pl-9">
                                                                         <!-- Title -->
-                                                                        <p class="text-2xl font-bold text-gray-500 group-hover:text-gray-700">おすすめのエクササイズ</p>
+                                                                        <p class="text-2xl font-bold text-gray-500 group-hover:text-gray-700">{{ __("movie_title") }}</p>
                                                                         <div class="bg-blue-400 group-hover:bg-blue-600 h-full w-4 absolute top-0 left-0"> </div>
                                                                     </div>
                                                                 </div>
@@ -143,11 +143,11 @@
                                                                     <div class="flex flex-col items-center justify-center max-w-md mx-auto">
                                                                         <div class="w-full h-64 bg-gray-300 bg-center bg-cover shadow-md" style="background-image: url({{$movie->poster_path}})"></div>
                                                                         <div class="w-72 -mt-4 overflow-hidden bg-white rounded-lg shadow-lg  md:w-9/12">
-                                                                            <h3 class="py-2 font-bold tracking-wide text-center text-gray-800">エクササイズ動画<br>{{$movie->description}}</h3>
+                                                                            <h3 class="py-2 font-bold tracking-wide text-center text-gray-800">{{$movie->description}}</h3>
 
                                                                             <div class="flex items-center justify-between px-3 py-2 bg-gray-200">
                                                                                 <span class="font-bold text-gray-800">{{$movie->length}}</span>
-                                                                                <button class="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">再生</button>
+                                                                                <button class="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">{{ __("movie_play") }}</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -163,7 +163,6 @@
                                     </div>
                                 @endforeach
                                 </div>
-
                                 <!-- Controls -->
                                 <button
                                     class="carousel-control-prev w-10 absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
@@ -182,7 +181,7 @@
 
                         <div class="tab-pane fade" id="tabs-body" role="tabpanel" aria-labelledby="tabs-body-tab">
                             <div class="flex items-center justify-center">
-                                <h1 class="text-2xl md:text-3xl">あなたの体型タイプ判定</h1>
+                                <h1 class="text-2xl md:text-3xl">{{ __('body_check_title') }}</h1>
                             </div>
                             @if( count($body_result) == 0)
                                 <div class="my-5">
@@ -208,11 +207,11 @@
                                     @foreach($body_result as $check_result_row)
                                         <div class="carousel-item @if ($loop->last)active @endif relative float-left w-full items-center justify-center">
                                             <div class="text-center my-3">
-                                                <p class="md:text-2xl">チェック日： <span class="text-red-800 bold">{{ $check_result_row->created_at }}</span></p>
+                                                <p class="md:text-2xl">{{ __("check_day") }}： <span class="text-red-800 bold">{{ $check_result_row->created_at }}</span></p>
                                             </div>
                                             <hr>
                                             <div class="w-full pt-4 md:pt-12 font-bold text-blue-400">
-                                                <h3 class="text-center py-2 border-t-2 border-b-2 border-blue-400">あなたの主な体型</h3>
+                                                <h3 class="text-center py-2 border-t-2 border-b-2 border-blue-400">{{ __("body_check_result") }}</h3>
                                                     <ul class="nav nav-tabs grid grid-cols-3 gap-4" id="tabs-tabFill" role="tablist">
                                                     @foreach(explode('|', $check_result_row->body_result) as $data)
                                                         <li class="nav-item grid text-center" role="presentation">
@@ -243,8 +242,71 @@
                                                                         </div>
                                                                         <div class="max-w-xl px-6 md:py-12 lg:max-w-5xl md:w-1/2 md:mr-4">
                                                                             <h2 class="text-gray-800 my-6 md:text-2xl break-words">{{$body_data_row->description}}</h2>
-                                                                            <p class="text-blue-400 my-6 md:text-lg break-words">{{$body_data_row->contents}}</p>
+                                                                            <p class="text-blue-400 my-2 md:text-lg break-words">{{$body_data_row->feature_contents}}</p>
+                                                                            <p class="text-blue-400 my-2 md:text-lg break-words">{{$body_data_row->cause_contents}}</p>
+                                                                            <p class="text-blue-400 my-2 md:text-lg break-words">{{$body_data_row->improvement_contents}}</p>
+                                                                            <div class="my-4 lg:mt-0 lg:row-span-2">
+                                                                                <h3 class="text-lg text-gray-900 font-medium">{{ __('food_title') }}</h3>
+                                                                                <hr>
+                                                                                <p class="">{{$body_data_row->food}}</p>
+                                                                            </div>
+                                                                            <div class="">
+                                                                                <h3 class="text-lg text-gray-900 font-medium">{{ __('drink_title') }}</h3>
+                                                                                <hr>
+                                                                                <p class="">{{$body_data_row->drink}}</p>
+                                                                            </div>
                                                                         </div>
+                                                                    </div>
+                                                                </section>
+
+                                                                <section class="grid grid-cols-1 md:grid-cols-2 md:gap-8 mt-10">
+                                                                    <div>
+                                                                        <div class="relative mb-4">
+                                                                            <div class="group shadow-lg hover:shadow-2xl duration-200 delay-75 w-full bg-white rounded-sm py-6 pr-6 pl-9">
+                                                                                <!-- Title -->
+                                                                                <p class="text-2xl font-bold text-gray-500 group-hover:text-gray-700">{{ __("item_title") }}</p>
+                                                                                <div class="bg-blue-400 group-hover:bg-blue-600 h-full w-4 absolute top-0 left-0"> </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        @foreach($items as $item)
+                                                                            @if($body_data_row->id == $item->body_id)
+                                                                                <div class="flex flex-col items-center justify-center max-w-md mx-auto">
+                                                                                    <div class="w-full h-64 bg-gray-300 bg-center bg-cover shadow-md" style="background-image: url({{$item->img_path}})"></div>
+                                                                                    <div class="w-72 -mt-4 overflow-hidden bg-white rounded-lg shadow-lg md:w-9/12">
+                                                                                        <h3 class="py-2 font-bold tracking-wide text-center text-gray-800">{{$item->description}}</h3>
+
+                                                                                        <div class="flex items-center justify-between px-3 py-2 bg-gray-200">
+                                                                                            <span class="font-bold text-gray-800">&yen;{{$item->price}}</span>
+                                                                                            <a class="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">{{ __("item_link") }}</a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </div>
+                                                                    <div>
+                                                                        <div class="relative mb-4 mt-10 md:mt-0">
+                                                                            <div class="group shadow-lg hover:shadow-2xl duration-200 delay-75 w-full bg-white rounded-sm py-6 pr-6 pl-9">
+                                                                                <!-- Title -->
+                                                                                <p class="text-2xl font-bold text-gray-500 group-hover:text-gray-700">{{ __("movie_title") }}</p>
+                                                                                <div class="bg-blue-400 group-hover:bg-blue-600 h-full w-4 absolute top-0 left-0"> </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        @foreach($movies as $movie)
+                                                                            @if($body_data_row->id == $movie->body_id)
+                                                                                <div class="flex flex-col items-center justify-center max-w-md mx-auto">
+                                                                                    <div class="w-full h-64 bg-gray-300 bg-center bg-cover shadow-md" style="background-image: url({{$movie->poster_path}})"></div>
+                                                                                    <div class="w-72 -mt-4 overflow-hidden bg-white rounded-lg shadow-lg  md:w-9/12">
+                                                                                        <h3 class="py-2 font-bold tracking-wide text-center text-gray-800">{{$movie->description}}</h3>
+
+                                                                                        <div class="flex items-center justify-between px-3 py-2 bg-gray-200">
+                                                                                            <span class="font-bold text-gray-800">{{$movie->length}}</span>
+                                                                                            <button class="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">{{ __("movie_play") }}</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            @endif
+                                                                        @endforeach
                                                                     </div>
                                                                 </section>
                                                             </div>
@@ -255,17 +317,17 @@
                                         </div>
                                     @endforeach
                                 </div>
-
+                                <!-- Controls -->
                                 <button
-                                    class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+                                    class="carousel-control-prev w-10 absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
                                     type="button" data-bs-target="#carouselBodyCaptions" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+                                    <span class="carousel-control-prev-icon inline-block bg-no-repeat text-red-600" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
                                 <button
-                                    class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+                                    class="carousel-control-next w-10 absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
                                     type="button" data-bs-target="#carouselBodyCaptions" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+                                    <span class="carousel-control-next-icon inline-block bg-no-repeat text-red-600" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
                                 </button>
                             </div>
@@ -282,12 +344,19 @@
     {{-- グラフ描画用JS --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
     <script>
+        @if( session('message') == 'bodySubmit' )
+            window.onload = function() {
+            let hangoutButton = document.getElementById("tabs-body-tab");
+            hangoutButton.click();
+        };
+        @endif
+
         @foreach($type_result as $check_result_row)
 
         var check_val = [{{ $check_result_row->soul_plus }},{{ $check_result_row->heat_plus }},{{ $check_result_row->blood_plus }},{{ $check_result_row->water_plus }},{{ $check_result_row->soul_minus }},{{ $check_result_row->heat_minus }},{{ $check_result_row->blood_minus }},{{ $check_result_row->water_minus }}];
 
         var ctx{{ $loop->index }} = document.getElementById("typeChart{{ $loop->index }}");
-        var myChart{{ $loop->index }} = new Chart(ctx{{ $loop->index }}, {
+        const myChart{{ $loop->index }} = new Chart(ctx{{ $loop->index }}, {
             type: 'radar',
             data: {
                 labels: ['{{ __("soul_plus") }}', '{{ __("heat_plus") }}', '{{ __("blood_plus") }}', '{{ __("water_plus") }}', '{{ __("soul_minus") }}', '{{ __("heat_minus") }}', '{{ __("blood_minus") }}', '{{ __("water_minus") }}'],

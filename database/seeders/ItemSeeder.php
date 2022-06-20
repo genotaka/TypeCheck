@@ -17,7 +17,7 @@ class ItemSeeder extends Seeder
         DB::table('items')->insert([
             [
                 'type_id' => '1',
-                'body_id' => '',
+                'body_id' => '1',
                 'item_name' => 'soul_plus_tab',
                 'description' => '気プラス商品名',
                 'price' => 0,
@@ -26,7 +26,7 @@ class ItemSeeder extends Seeder
             ],
             [
                 'type_id' => '2',
-                'body_id' => '',
+                'body_id' => '2',
                 'item_name' => 'blood_plus_tab',
                 'description' => '血プラス商品名',
                 'price' => 0,
@@ -35,7 +35,7 @@ class ItemSeeder extends Seeder
             ],
             [
                 'type_id' => '3',
-                'body_id' => '',
+                'body_id' => '3',
                 'item_name' => 'water_plus_tab',
                 'description' => '水プラス商品名',
                 'price' => 0,
@@ -44,7 +44,7 @@ class ItemSeeder extends Seeder
             ],
             [
                 'type_id' => '4',
-                'body_id' => '',
+                'body_id' => '4',
                 'item_name' => 'heat_plus_tab',
                 'description' => '熱プラス商品名',
                 'price' => 0,
