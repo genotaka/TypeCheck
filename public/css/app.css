@@ -4019,6 +4019,9 @@ textarea.form-control.is-invalid {
   width: -moz-fit-content;
   width: fit-content;
 }
+.w-12 {
+  width: 3rem;
+}
 .max-w-7xl {
   max-width: 80rem;
 }
@@ -4412,6 +4415,9 @@ textarea.form-control.is-invalid {
 }
 .p-8 {
   padding: 2rem;
+}
+.p-1 {
+  padding: 0.25rem;
 }
 .px-4 {
   padding-left: 1rem;
@@ -5186,6 +5192,10 @@ textarea.form-control.is-invalid {
 
   .md\:p-20 {
     padding: 5rem;
+  }
+
+  .md\:p-6 {
+    padding: 1.5rem;
   }
 
   .md\:py-12 {

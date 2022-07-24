@@ -13,14 +13,24 @@
             </div>
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg md:mt-6">
-                <div class="p-6 bg-white border-b border-gray-200">
+                <div class="p-2 md:p-6 bg-white border-b border-gray-200">
                     <div class="grid grid-cols-2 md:grid-cols-4">
-                        @foreach($body_data as $body_data_row)
-                            <div class="flex text-start justify-center items-end md:items-center">
-                                <img class="w-2/3 md:w-20" src="{{$body_data_row->mark_path}}" alt="status">
-                                <h3 class="text-blue-400 md:text-sm mt-2 md:mt-4">{{$body_data_row->description}}</h3>
-                            </div>
-                        @endforeach
+                        <div class="flex text-start justify-start items-end md:items-center">
+                            <img class="w-12 md:w-24" src="{{ asset('/img/mark/pear.png') }}" alt="status">
+                            <h3 class="text-blue-400 md:text-sm mt-2 md:mt-4">梨型<br>(内脏脂肪肥满)</h3>
+                        </div>
+                        <div class="flex text-start justify-start items-end md:items-center">
+                            <img class="w-12 md:w-24" src="{{ asset('/img/mark/apple.png') }}" alt="status">
+                            <h3 class="text-blue-400 md:text-sm mt-2 md:mt-4">苹果型<br>(内脏脂肪型肥胖)</h3>
+                        </div>
+                        <div class="flex text-start justify-start items-end md:items-center">
+                            <img class="w-12 md:w-24" src="{{ asset('/img/mark/peanuts.png') }}" alt="status">
+                            <h3 class="text-blue-400 md:text-sm mt-2 md:mt-4">花生型<br>(水肿型肥胖)</h3>
+                        </div>
+                        <div class="flex text-start justify-start items-end md:items-center">
+                            <img class="w-12 md:w-24" src="{{ asset('/img/mark/pineapple.png') }}" alt="status">
+                            <h3 class="text-blue-400 md:text-sm mt-2 md:mt-4">菠萝型<br>(混合型肥胖)</h3>
+                        </div>
                     </div>
 
                     <div class="mt-10">
