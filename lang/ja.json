@@ -19,7 +19,7 @@
     "food_title": "直す食べ物",
     "drink_title": "直す飲み物",
     "top_text": "診断テストであなたの体質をチェックしましょう！",
-    "top_text_2": "",
+    "top_text_2": " ",
     "top_title": "タイプチェック",
     "top_title_2": "Challenge!",
     "login_info": "診断にはログインもしくはアカウント登録が必要です。",
@@ -47,5 +47,10 @@
     "body_check_title": "あなたの体型タイプ判定",
     "body_check_result": "あなたの主な体型",
     "check_day": "チェック日",
-    "type check": "タイプ診断"
+    "type check": "タイプ診断",
+    "type_info_title": "体質チェックとは",
+    "type_info_description": "体質の主なタイプは大きく分けて8つのタイプがあります。",
+    "body_info_title": "体型チェックとは",
+    "body_info_description": "体型の主なタイプは大きく分けて4つのタイプがあります。",
+    "not_result": "まだ症状チェックをしていないため結果はありません。ご自身の健康状態を診断してみましょう。"
 }

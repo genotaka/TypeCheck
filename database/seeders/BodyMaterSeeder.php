@@ -18,6 +18,7 @@ class BodyMaterSeeder extends Seeder
             [
                 'id' => '1',
                 'sort_no' => '1',
+                'display_sort_no' => '1',
                 'body_name' => 'pear',
                 'description' => '梨型（内脏脂肪肥满）',
                 'feature_contents' => '体质特征为：皮下脂肪堆积较多且脂肪容易堆积在臀部、大腿和小腹位置，俗称“大象腿”和“小肚腩”。',
@@ -31,6 +32,7 @@ class BodyMaterSeeder extends Seeder
             [
                 'id' => '2',
                 'sort_no' => '2',
+                'display_sort_no' => '2',
                 'body_name' => 'apple',
                 'description' => '苹果型（内脏脂肪型肥胖）',
                 'feature_contents' => '体质特征：多余脂肪堆积在腰腹部与内脏之间，且容易腰疼，便秘、俗称“大肚腩”。',
@@ -44,6 +46,7 @@ class BodyMaterSeeder extends Seeder
             [
                 'id' => '3',
                 'sort_no' => '3',
+                'display_sort_no' => '3',
                 'body_name' => 'peanuts',
                 'description' => '花生型（水肿型肥胖）',
                 'feature_contents' => '体质特征为：脸大腿粗，倒不是肉多结实，主要是面部、上肢和下肢易水肿。俗称大饼脸，金鱼眼。',
@@ -57,6 +60,7 @@ class BodyMaterSeeder extends Seeder
             [
                 'id' => '4',
                 'sort_no' => '4',
+                'display_sort_no' => '4',
                 'body_name' => 'pineapple',
                 'description' => '菠萝型（混合型肥胖）',
                 'feature_contents' => '特征表现为：全身肥胖，胖得快，瘦得也快。减肥效果明显，但容易反弹。',

@@ -1,5 +1,5 @@
 <x-app-layout>
-    @section('title', 'TypeCheck')
+    @section('title', 'Check Start')
 
     <x-slot name="header">
     </x-slot>

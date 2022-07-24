@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('body_masters', function (Blueprint $table) {
             $table->id();
             $table->tinyInteger('sort_no')->unique();
+            $table->tinyInteger('display_sort_no')->unique();
             $table->string('body_name');
             $table->string('description');
             $table->text('feature_contents');

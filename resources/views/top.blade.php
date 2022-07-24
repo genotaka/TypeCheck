@@ -27,12 +27,12 @@
                     @endif
                         <div class="space-y-4 md:space-y-0 flex flex-col md:flex-row gap-x-10 md:gap-y-10 justify-center items-center text-center">
                             <x-button>
-                                <a href="{{ route('check.type.start') }}">
+                                <a href="{{ route('check.type.index') }}">
                                     {{ __('check_type') }}
                                 </a>
                             </x-button>
                             <x-button>
-                                <a href="{{ route('check.body.start') }}">
+                                <a href="{{ route('check.body.index') }}">
                                     {{ __('check_body') }}
                                 </a>
                             </x-button>

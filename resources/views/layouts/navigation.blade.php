@@ -18,10 +18,10 @@
                     <x-nav-link :href="route('mypage.index')" :active="request()->routeIs('mypage.index')">
                         {{ __('mypage') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('check.type.start')" :active="request()->routeIs('check.type.start')">
+                    <x-nav-link :href="route('check.type.index')" :active="request()->routeIs('check.type.*')">
                         {{ __('check_type') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('check.body.start')" :active="request()->routeIs('check.body.start')">
+                    <x-nav-link :href="route('check.body.index')" :active="request()->routeIs('check.body.*')">
                         {{ __('check_body') }}
                     </x-nav-link>
                 </div>
@@ -78,10 +78,10 @@
             <x-responsive-nav-link :href="route('mypage.index')" :active="request()->routeIs('mypage.index')">
                 {{ __('mypage') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('check.type.start')" :active="request()->routeIs('check.type.start')">
+            <x-responsive-nav-link :href="route('check.type.index')" :active="request()->routeIs('check.type.*')">
                 {{ __('check_type') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('check.body.start')" :active="request()->routeIs('check.body.start')">
+            <x-responsive-nav-link :href="route('check.body.index')" :active="request()->routeIs('check.body.*')">
                 {{ __('check_body') }}
             </x-responsive-nav-link>
         </div>

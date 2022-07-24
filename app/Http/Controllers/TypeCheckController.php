@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Session;
 
 class TypeCheckController extends Controller
 {
+    public function index(){
+        $qList = DB::table('type_masters')->whereNull('deleted_at')->orderBy('display_sort_no','asc')->get();
+
+        return view('check.type.index', ['type_data' => $qList]);
+    }
+
     public function check(){
         $qList = DB::table('type_check_masters')->whereNull('deleted_at')->orderBy('sort_no','asc')->get();
 

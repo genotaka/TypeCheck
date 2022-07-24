@@ -11,7 +11,7 @@
     "Confirm Password": "用于密码确认",
     "Already registered?": "返回登录页面",
     "Register": "账户注册",
-    "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.": "パスワードをお忘れの場合は\n登録しているID（メールアドレス）にパスワードリセット用のメールをお送りします。",
+    "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.": "如果您忘記密碼\n重置密碼的電子郵件將發送到註冊的 ID（電子郵件地址）",
     "Email Password Reset Link": "密码（确认）",
     "login_page": "返回登录页面",
     "Whoops! Something went wrong.": "授权错误",
@@ -48,5 +48,10 @@
     "body_check_title": "你的体型结果",
     "body_check_result": "你的体型",
     "check_day": "检测日",
-    "type check": "タイプ診断"
+    "type check": "タイプ診断",
+    "type_info_title": "八大体质",
+    "type_info_description": " ",
+    "body_info_title": "四种体型",
+    "body_info_description": " ",
+    "not_result": "沒有結果因為尚未檢查症狀"
 }

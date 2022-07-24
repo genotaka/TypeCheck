@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('type_masters', function (Blueprint $table) {
             $table->id();
             $table->tinyInteger('sort_no')->unique();
+            $table->tinyInteger('display_sort_no')->unique();
             $table->string('type_name');
             $table->string('type_caption');
             $table->string('contents');

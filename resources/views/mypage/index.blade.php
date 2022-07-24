@@ -29,9 +29,9 @@
                             @if( count($type_result) == 0)
                             <div class="my-5">
                                 <div class="mt-10 flex flex-wrap items-center justify-center">
-                                    <p class="w-full text-center p-6">まだ症状チェックをしていないため結果はありません。<br class="md:hidden">ご自身の健康状態を診断してみましょう。</p>
+                                    <p class="w-full text-center p-6">{{ __('not_result') }}</p>
                                     <x-button>
-                                        <a href="{{ route('check.type.start') }}">
+                                        <a href="{{ route('check.type.index') }}">
                                             {{ __('check_type') }}
                                         </a>
                                     </x-button>
@@ -186,9 +186,9 @@
                             @if( count($body_result) == 0)
                                 <div class="my-5">
                                     <div class="mt-10 flex flex-wrap items-center justify-center">
-                                        <p class="w-full text-center p-6">まだ症状チェックをしていないため結果はありません。<br class="md:hidden">ご自身の健康状態を診断してみましょう。</p>
+                                        <p class="w-full text-center p-6">{{ __('not_result') }}</p>
                                         <x-button>
-                                            <a href="{{ route('check.body.start') }}">
+                                            <a href="{{ route('check.body.index') }}">
                                                 {{ __('check_body') }}
                                             </a>
                                         </x-button>

@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Session;
 
 class BodyCheckController extends Controller
 {
+    public function index(){
+        $qList = DB::table('body_masters')->whereNull('deleted_at')->orderBy('display_sort_no','asc')->get();
+
+        return view('check.body.index', ['body_data' => $qList]);
+    }
+
     public function check(){
         $qList = DB::table('body_check_masters')->orderBy('sort_no','asc')->get();
 
