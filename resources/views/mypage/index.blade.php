@@ -52,7 +52,7 @@
                                             <p class="md:text-2xl">{{ __("check_day") }}： <span class="text-red-800 bold">{{ $check_result_row->created_at }}</span></p>
                                         </div>
                                         <hr>
-                                        <div class="md:columns-2">
+                                        <div class="md:columns-2 md:mb-6">
                                             <div class="w-full">
                                                 <canvas id="typeChart{{ $loop->index }}"></canvas>
                                             </div>
@@ -89,7 +89,8 @@
                                                                 <div class="md:w-1/2 md:mx-12 mt-8 md:my-20">
                                                                     <img src="{{$type_data_row->image_path}}" alt="">
                                                                 </div>
-                                                                <div class="max-w-xl px-6 md:py-12 lg:max-w-5xl md:w-1/2 md:mr-4">
+                                                                <div class="max-w-xl mt-6 md:mt-0 md:px-6 md:py-12 lg:max-w-5xl md:w-1/2 md:mr-4">
+                                                                    <h4 class="p-2 my-2 bg-pink-400 text-white font-bold text-center w-full">{{$type_data_row->contents_title}}</h4>
                                                                     <p class="text-blue-400 my-6 md:text-lg break-words">{{$type_data_row->contents}}</p>
                                                                     <div class="my-4 lg:mt-0 lg:row-span-2">
                                                                         <h3 class="text-2xl text-gray-900 font-medium">{{ __('food_title') }}</h3>

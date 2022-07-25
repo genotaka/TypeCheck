@@ -17,7 +17,7 @@
                     <div class="grid grid-cols-2 md:grid-cols-4">
                         <div class="flex text-start justify-start items-end md:items-center">
                             <img class="w-12 md:w-24" src="{{ asset('/img/mark/pear.png') }}" alt="status">
-                            <h3 class="text-blue-400 md:text-sm mt-2 md:mt-4">梨型<br>(内脏脂肪肥满)</h3>
+                            <h3 class="text-blue-400 md:text-sm mt-2 md:mt-4">梨型<br>(皮下脂肪型肥胖)</h3>
                         </div>
                         <div class="flex text-start justify-start items-end md:items-center">
                             <img class="w-12 md:w-24" src="{{ asset('/img/mark/apple.png') }}" alt="status">
@@ -37,8 +37,7 @@
                         <div class="relative mb-4 mt-10 md:mt-0">
                             <div class="group w-full py-0 pr-2 pl-9">
                                 <p>
-                                    能量摄入＞能量消耗＝长胖<br>
-                                    肥胖根本的原因是摄入的热量,长期大于消耗的热量,过多的热量以脂肪的形式储存在体内。
+                                    能量摄入＞能量消耗＝长胖
                                 </p>
                                 <div class="bg-blue-400 group-hover:bg-blue-600 h-full w-4 absolute top-0 left-0"> </div>
                             </div>
@@ -46,8 +45,7 @@
                         <div class="relative mb-4 mt-10 md:mt-0">
                             <div class="group w-full py-0 pr-2 pl-9">
                                 <p>
-                                    不同的人受遗传基因，生理特征，生活方式的影响，身体对热量的摄入，
-                                    体内代谢和调节过程均有差异,导致脂肪的堆积部位不同，形成常见的肥胖类型。
+                                    受遗传基因，生理特征，生活方式的影响，不同的人，身体对热量的摄入、体内代谢和调节过程均有差异,导致脂肪的堆积部位不同，形成常见的肥胖类型。
                                 </p>
                                 <div class="bg-blue-400 group-hover:bg-blue-600 h-full w-4 absolute top-0 left-0"> </div>
                             </div>
@@ -55,15 +53,7 @@
                         <div class="relative mb-4 mt-10 md:mt-0">
                             <div class="group w-full py-0 pr-2 pl-9">
                                 <p>
-                                    魔法盒私人定制将常见的肥胖类型分为苹果型(内脏脂肪型肥胖),鸭梨型(皮下脂肪型肥胖)，花生型（水肿型肥胖），菠萝型（混合型肥胖）。
-                                </p>
-                                <div class="bg-blue-400 group-hover:bg-blue-600 h-full w-4 absolute top-0 left-0"> </div>
-                            </div>
-                        </div>
-                        <div class="relative mb-4 mt-10 md:mt-0">
-                            <div class="group w-full py-0 pr-2 pl-9">
-                                <p>
-                                    每个人肥胖的原因和特点不同，瘦身首先需要了解自己的体质，找到适合自己的方法。
+                                    魔法盒私人定制将常见的肥胖类型分为苹果型（内脏脂肪型肥胖），鸭梨型（皮下脂肪型肥胖），花生型（水肿型肥胖），菠萝型（混合型肥胖）。
                                 </p>
                                 <div class="bg-blue-400 group-hover:bg-blue-600 h-full w-4 absolute top-0 left-0"> </div>
                             </div>

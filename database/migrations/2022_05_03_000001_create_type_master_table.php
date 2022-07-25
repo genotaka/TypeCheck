@@ -19,6 +19,7 @@ return new class extends Migration
             $table->tinyInteger('display_sort_no')->unique();
             $table->string('type_name');
             $table->string('type_caption');
+            $table->string('contents_title');
             $table->string('contents');
             $table->string('mark_path');
             $table->string('image_path');

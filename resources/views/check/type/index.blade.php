@@ -17,8 +17,8 @@
                     <div class="grid grid-cols-4 md:grid-cols-8">
                         @foreach($type_data as $type_data_row)
                             <div class="grid items-center text-center justify-center">
-                                <img class="w-24" src="{{$type_data_row->mark_path}}" alt="status">
-                                <h3 class="font-bold text-gray-800 md:text-3xl text-blue-400 mt-2 md:mt-0">{{$type_data_row->type_caption}}</h3>
+                                <img class="w-16 md:w-24" src="{{$type_data_row->mark_path}}" alt="status">
+                                <h3 class="font-bold text-gray-800 text-sm md:text-3xl text-blue-400 mt-2 md:mt-0">{{$type_data_row->type_caption}}</h3>
                             </div>
                         @endforeach
                     </div>
