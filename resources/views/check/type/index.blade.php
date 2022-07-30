@@ -27,8 +27,7 @@
                         <div class="relative mb-4 mt-10 md:mt-0">
                             <div class="group w-full py-0 pr-2 pl-9">
                                 <p>
-                                    汉方理论认为人体的气血水等要素在不断变化，
-                                    各要素趋于平衡时即达到身体的最佳健康状态。
+                                    汉方理论认为人体的气血水等要素在不断变化，各要素趋于平衡时即达到身体的最佳健康状态。
                                 </p>
                                 <div class="bg-pink-400 group-hover:bg-pink-600 h-full w-4 absolute top-0 left-0"> </div>
                             </div>
@@ -36,8 +35,7 @@
                         <div class="relative mb-4 mt-10 md:mt-0">
                             <div class="group w-full py-0 pr-2 pl-9">
                                 <p>
-                                    在现实生活中，外界环境，不良的生活习惯，
-                                    各种精神压力都会影响体内平衡，使身体陷入不健康状态，久而久之导致产生各种疾病。
+                                    现实生活中，外界环境，不良的生活习惯，各种精神压力等都会影响体内平衡，使身体陷入不平衡状态，久而久之导致各种疾病的发生。
                                 </p>
                                 <div class="bg-pink-400 group-hover:bg-pink-600 h-full w-4 absolute top-0 left-0"> </div>
                             </div>
@@ -45,7 +43,7 @@
                         <div class="relative mb-4 mt-10 md:mt-0">
                             <div class="group w-full py-0 pr-2 pl-9">
                                 <p>
-                                    体质代表一个阶段的身体状态，可以通过内在和外在调节得到改变。
+                                    体质仅代表某一阶段的身体状态，可以通过调节得到改变。
                                 </p>
                                 <div class="bg-pink-400 group-hover:bg-pink-600 h-full w-4 absolute top-0 left-0"> </div>
                             </div>
@@ -53,8 +51,7 @@
                         <div class="relative mb-4 mt-10 md:mt-0">
                             <div class="group w-full py-0 pr-2 pl-9">
                                 <p>
-                                    魔法盒私人定制依据汉方理论并结合现代生活的特点，
-                                    将身体状态分为8种体质，每种体质分别代表着身体失去平衡需要调节的要素。
+                                    魔法盒私人定制依据汉方理论并结合现代生活的特点，将身体状态分为8种体质，每种体质分别代表着身体失去平衡时的某种状态。
                                 </p>
                                 <div class="bg-pink-400 group-hover:bg-pink-600 h-full w-4 absolute top-0 left-0"> </div>
                             </div>
@@ -62,8 +59,7 @@
                         <div class="relative mb-4 mt-10 md:mt-0">
                             <div class="group w-full py-0 pr-2 pl-9">
                                 <p>
-                                    魔法盒私人定制的测试会使你迅速了解自己的体质，
-                                    通过定制化的膳食营养补充，饮食调节，辅助运动改善体质，获得健康平衡状态。
+                                    魔法盒私人定制的测试让你迅速了解自己此时的身体状态，通过定制化的膳食营养补充，饮食调节，辅助运动的方式，达到身体的最佳平衡状态。
                                 </p>
                                 <div class="bg-pink-400 group-hover:bg-pink-600 h-full w-4 absolute top-0 left-0"> </div>
                             </div>

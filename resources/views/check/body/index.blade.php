@@ -53,7 +53,7 @@
                         <div class="relative mb-4 mt-10 md:mt-0">
                             <div class="group w-full py-0 pr-2 pl-9">
                                 <p>
-                                    魔法盒私人定制将常见的肥胖类型分为苹果型（内脏脂肪型肥胖），鸭梨型（皮下脂肪型肥胖），花生型（水肿型肥胖），菠萝型（混合型肥胖）。
+                                    魔法盒私人定制将常见的肥胖类型分为苹果型（内脏脂肪型肥胖），梨型（皮下脂肪型肥胖），花生型（水肿型肥胖），菠萝型（混合型肥胖）。
                                 </p>
                                 <div class="bg-blue-400 group-hover:bg-blue-600 h-full w-4 absolute top-0 left-0"> </div>
                             </div>
